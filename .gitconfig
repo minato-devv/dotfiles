@@ -23,3 +23,5 @@
 	algorithm = histogram
 [include]
 	path = gitconfig_local
+[advice]
+	enabled = false
