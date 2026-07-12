@@ -3,7 +3,7 @@
 [alias]
 	lg = log --oneline --graph --decorate --all
 	a = add
-	s = status
+	s = status -s
 	sw = switch
 	br = branch
 	cm = commit -m
@@ -23,5 +23,3 @@
 	algorithm = histogram
 [include]
 	path = gitconfig_local
-[advice]
-	enabled = false

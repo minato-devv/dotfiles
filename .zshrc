@@ -20,6 +20,7 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE 
 setopt CORRECT 
 setopt COMPLETE_IN_WORD
+setopt AUTO_PUSHD
 
 autoload -U compinit
 compinit
