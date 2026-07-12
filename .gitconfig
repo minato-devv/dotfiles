@@ -6,7 +6,7 @@
 	s = status -s
 	sw = switch
 	br = branch
-	cm = commit -m
+	c = commit -m
 	p = push
 	pl = pull
 	d = diff --color-words

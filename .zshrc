@@ -63,3 +63,6 @@ pcopy() {
 
 alias aicommit='fabric -p create_git_diff_commit'
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
+alias ds='dirs -v'
+alias txag='tmux a -t agents'
+source ./.zshrc_private
