@@ -1,2 +1,6 @@
-fabric/.env
+fabric/
 .DS_Store
+nvim/nvim-pack-lock.json
+opencode/src/
+opencode/tasks/
+opencode/tests/
