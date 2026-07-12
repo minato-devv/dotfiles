@@ -1,3 +1,5 @@
+[user]
+	name = minato-devv
 [alias]
 	lg = log --oneline --graph --decorate --all
 	a = add
