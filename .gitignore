@@ -4,3 +4,4 @@ nvim/nvim-pack-lock.json
 opencode/src/
 opencode/tasks/
 opencode/tests/
+.gitconfig_local
