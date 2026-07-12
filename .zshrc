@@ -60,5 +60,5 @@ pcopy() {
 	echo "Copied location of $1 to clipboard"
 }
 
-alias ai-commit='git diff | fabric --stream -p create_git_diff_commit'
+alias aicommit='fabric -p create_git_diff_commit'
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
