@@ -60,3 +60,5 @@ cask "prismlauncher"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 npm "@gitlawb/zero"
+# Audit git repos for secrets
+brew "gitleaks"
