@@ -1,0 +1,27 @@
+alias ls='eza -A --group-directories-first --hyperlink always --icons always'
+alias cat='bat'
+alias vim='nvim'
+
+alias eg='${EDITOR} ${HOME}/.config/ghostty/config'
+
+alias ez='${EDITOR} ${HOME}/.zshrc'
+alias cz='bat ${HOME}/.zshrc'
+alias sz='source ${HOME}/.zshrc'
+alias xz='exec zsh'
+
+alias pysour='source .venv/bin/activate'
+alias pyvenv='python3 -m venv .venv && pysour'
+
+alias du='du -sh'
+alias top='top -stats mem,cpu,command,state,time,power -o -mem -s 2 -U user'
+
+alias qwenllama='cd ~/llama.cpp && ./build/bin/llama-server -m $qwen9b -c 32768 -ctk q8_0 -ctv q8_0 -fa on -ngl 99 -b 256 -ub 256'
+
+alias vencord='${HOME}/Installer/vencordinstaller'
+alias buuc='brew update; brew upgrade; brew cleanup --prune=all'
+alias aicommit='fabric -p create_git_diff_commit'
+alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
+alias ds='dirs -v'
+alias txag='tmux a -t agents'
+alias ff='fastfetch'
+alias ed='cd "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/Dev-backups/.dotfiles"'
