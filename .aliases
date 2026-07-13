@@ -3,11 +3,11 @@ alias cat='bat'
 alias vim='nvim'
 
 alias eg='${EDITOR} ${HOME}/.config/ghostty/config'
-
 alias ez='${EDITOR} ${HOME}/.zshrc'
 alias cz='bat ${HOME}/.zshrc'
 alias sz='source ${HOME}/.zshrc'
 alias xz='exec zsh'
+alias ed='cd "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/Dev-backups/.dotfiles"'
 
 alias pysour='source .venv/bin/activate'
 alias pyvenv='python3 -m venv .venv && pysour'
@@ -19,9 +19,11 @@ alias qwenllama='cd ~/llama.cpp && ./build/bin/llama-server -m $qwen9b -c 32768 
 
 alias vencord='${HOME}/Installer/vencordinstaller'
 alias buuc='brew update; brew upgrade; brew cleanup --prune=all'
-alias aicommit='fabric -p create_git_diff_commit'
+alias buu='brew update; brew upgrade'
+alias aicommit='git d | fabric -p create_git_diff_commit'
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
+alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
 alias ds='dirs -v'
-alias txag='tmux a -t agents'
+alias tx='tmux'
 alias ff='fastfetch'
-alias ed='cd "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/Dev-backups/.dotfiles"'
+alias tree='fd -d 2'
