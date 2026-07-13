@@ -20,7 +20,7 @@
 	rebase = true
 [fetch]
 	prune = true
-[diff]
-	algorithm = histogram
+; [diff]
+; 	algorithm = histogram
 [include]
-	path = gitconfig_local
+	path = .gitconfig_local
