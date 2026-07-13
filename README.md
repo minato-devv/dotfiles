@@ -22,7 +22,7 @@ Top-level items include:
 1. Clone the repository:
 
 ```bash
-git clone git@github.com:minato-devv/dotfiles.git
+git clone https://github.com/minato-devv/dotfiles.git
 cd dotfiles
 ```
 
@@ -50,7 +50,7 @@ ln -s "$PWD/.aliases" "$HOME/.aliases"
 5. (Optional) Install packages from `Brewfile`:
 
 ```bash
-brew bundle --file ./Brewfile
+brew bundle install --file ./Brewfile
 ```
 
 ## Usage
