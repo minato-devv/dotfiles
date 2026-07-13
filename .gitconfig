@@ -6,6 +6,7 @@
 	s = status -s
 	sw = switch
 	br = branch
+	cl = clone
 	c = commit -m
 	p = push
 	pl = pull

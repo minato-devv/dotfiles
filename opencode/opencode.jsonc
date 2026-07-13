@@ -10,6 +10,16 @@
 				"models": {
 					"unsloth/Qwen3.5-9B-GGUF:Q6_K": {"name": "Qwen3.5 9b-q6_k (local)"}
 				}
+			},
+			"ollama": {
+				"npm": "@ai-sdk/openai-compatible",
+				"name": "ollama",
+				"options": {
+					"baseURL": "http://127.0.0.1:11434/v1"
+				},
+				"models": {
+					"minimax-m2.5:cloud": {"name": "minimax-m2.5:cloud"}
+				}
 			}
 		}
 }

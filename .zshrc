@@ -65,4 +65,5 @@ alias aicommit='fabric -p create_git_diff_commit'
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
 alias ds='dirs -v'
 alias txag='tmux a -t agents'
-source ./.zshrc_private
+alias ff='fastfetch'
+alias ed='cd "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/Dev-backups/.dotfiles"'
