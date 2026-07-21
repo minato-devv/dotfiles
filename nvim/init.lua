@@ -29,6 +29,8 @@ vim.opt.listchars = {
 	extends = "»",
 	precedes = "«",
 }
-vim.pack.add({{src = "https://github.com/scottmckendry/cyberdream.nvim", name = "cyberdream"}})
-require("cyberdream").setup({variant = "auto", transparent = true})
-vim.cmd("colorscheme cyberdream")
+vim.o.background = 'dark'
+vim.cmd("colorscheme lunaperche")
+-- lunaperche delek pablo unokai zaibatsu
+-- vim.pack.add({{src = "https://github.com/scottmckendry/cyberdream.nvim", name = "cyberdream"}})
+-- require("cyberdream").setup({variant = "auto", transparent = true})
