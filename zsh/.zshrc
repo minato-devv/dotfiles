@@ -1,3 +1,33 @@
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+setopt EXTENDED_HISTORY 
+setopt APPEND_HISTORY 
+setopt INC_APPEND_HISTORY 
+setopt SHARE_HISTORY 
+setopt HIST_IGNORE_DUPS 
+setopt HIST_IGNORE_SPACE 
+setopt HIST_NO_STORE 
+setopt CORRECT 
+setopt COMPLETE_IN_WORD
+setopt AUTO_PUSHD
+setopt CHASE_LINKS
+
+autoload -U compinit
+compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' file-list all
+zstyle ':completion:*' file-sort change
+
+# export PROMPT='%w %3~ »»» '
+# export PROMPT='%w %3~ ⌘ '
+
+pcopy() { 
+	realpath "$1" | tr -d '\n' | pbcopy 
+	echo "Copied location of $1 to clipboard"
+}
+
 alias ls='eza -A --group-directories-first --hyperlink always --icons always'
 alias cat='bat'
 alias vim='nvim'
