@@ -13,9 +13,7 @@ typeset -U path fpath
 fpath=("${HOME}/.zsh/completion" $fpath)
 path=("${HOME}/.lmstudio/bin" $path)
 path=("${HOME}/llama.cpp/build/bin" $path)
-path=("${HOME}/.mlx-venv/bin" $path)
 path=("${HOME}/Dev/Fabric" $path)
-path=("${HOME}/.mlx-vlm/.venv/bin" $path)
 path=("/usr/local/bin" $path)
 
 export HOMEBREW_NO_ASK=1
