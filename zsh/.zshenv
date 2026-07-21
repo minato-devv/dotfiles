@@ -17,3 +17,4 @@ path=("${HOME}/Dev/Fabric" $path)
 path=("/usr/local/bin" $path)
 
 export HOMEBREW_NO_ASK=1
+export BAT_THEME="ansi"

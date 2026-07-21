@@ -23,13 +23,14 @@ zstyle ':completion:*' file-sort change
 # export PROMPT='%w %3~ »»» '
 
 # Editing
-alias ez='${EDITOR} $ZDOTDIR/.zshrc'
-alias ee='${EDITOR} $HOME/.zshenv'
+alias ei='${EDITOR} $ZDOTDIR/.zshrc'
+alias ev='${EDITOR} $HOME/.zshenv'
 
 # Viewing
-alias cz='cat $ZDOTDIR/.zshrc'
+alias ci='cat $ZDOTDIR/.zshrc'
+alias cv='cat $HOME/.zshenv'
 # Sourcing
-alias z='source $HOME/.zshenv && source $ZDOTDIR/.zshrc'
+alias z='exec zsh -l'
 
 alias ls='eza -A --group-directories-first --hyperlink always --icons always'
 alias cat='bat'

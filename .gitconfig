@@ -3,14 +3,13 @@
 [alias]
 	lg = log --oneline --graph --decorate --all
 	a = add
-	s = status -s
+	s = status
 	sw = switch
-	br = branch
+	b = branch
 	cl = clone
 	c = commit -m
 	p = push
 	pl = pull
-	d = diff --color-words
 [core]
 	editor = nvim
 	excludesfile = .gitignore_global
@@ -20,7 +19,7 @@
 	rebase = true
 [fetch]
 	prune = true
-; [diff]
-; 	algorithm = histogram
 [include]
 	path = .gitconfig_private
+[pager]
+	diff = false
