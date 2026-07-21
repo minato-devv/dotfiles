@@ -11,9 +11,10 @@ mkdir -p "$HOME/.config/zsh"
 
 ```zsh
 $REPO_ROOT=<Choose a directory> git clone -b zsh https://github.com/minato-devv/dotfiles.git $REPO_ROOT
+cd $REPO_ROOT
 chmod +x symlink.sh
-./symlink.sh $REPO_ROOT/zsh/.zshrc ${ZDOTDIR:-$HOME}/.zshrc
-./symlink.sh $REPO_ROOT/zsh/.zshenv ${ZDOTDIR:-$HOME}/.zshenv
+./symlink.sh zsh/.zshrc ${ZDOTDIR:-$HOME}/.zshrc
+./symlink.sh zsh/.zshenv ${ZDOTDIR:-$HOME}/.zshenv
 ```
 
 Notes:
