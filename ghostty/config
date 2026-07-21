@@ -1,5 +1,3 @@
-# theme = Fun Forrest
+theme = Ubuntu
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
-# background-opacity = 0.9
-# background-blur = 10
