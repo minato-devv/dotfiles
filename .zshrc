@@ -1,16 +1,6 @@
-fpath+=${HOME}/.zsh/completion
-path+=${HOME}/.lmstudio/bin
-path+=${HOME}/llama.cpp/build/bin
-path+=${HOME}/.mlx-venv/bin
-path+=${HOME}/Dev/Fabric
-path+=${HOME}/.mlx-vlm/.venv/bin
-
-typeset -U path fpath
-
-export EDITOR='nvim'
-export HISTSIZE=1000
-export SAVEHIST=1000
-export HOMEBREW_NO_ASK=1
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 setopt EXTENDED_HISTORY 
 setopt APPEND_HISTORY 
@@ -33,9 +23,39 @@ zstyle ':completion:*' file-sort change
 # export PROMPT='%w %3~ »»» '
 # export PROMPT='%w %3~ ⌘ '
 
-source ~/.aliases
-
 pcopy() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
 	echo "Copied location of $1 to clipboard"
 }
+
+alias ls='eza -A --group-directories-first --hyperlink always --icons always'
+alias cat='bat'
+alias vim='nvim'
+
+alias eg='${EDITOR} ${HOME}/.config/ghostty/config'
+alias ez='${EDITOR} ${HOME}/.zshrc'
+alias cz='bat ${HOME}/.zshrc'
+alias sz='source ${HOME}/.zshrc'
+alias xz='exec zsh'
+alias ed='cd "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/Dev-backups/.dotfiles"'
+alias ea='${EDITOR} "${HOME}/.aliases"'
+
+alias pysour='source .venv/bin/activate'
+alias pyvenv='python3 -m venv .venv && pysour'
+
+alias du='du -sh'
+alias top='top -stats mem,cpu,command,state,time,power -o -mem -s 2 -U user'
+
+alias vencord='${HOME}/Installer/vencordinstaller'
+
+alias draft-commit='fabric -p create_git_diff_commit'
+
+alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
+alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
+alias ff='fastfetch'
+alias tree='fd -d 2'
+alias rm-all-images='container image ls --format yaml | rg "^ {4}name:" | sed -E 's/^.{10}//' | xargs -P 4 container image rm'
+alias size='du -sh * | sort -hr'
+
+alias pi='container run -it  --rm -v "$PWD:/home/node/workspace" -v ~/Dev/pi-container/pi-agent:/home/node/.pi/agent pi-coding-agent:local'
+
