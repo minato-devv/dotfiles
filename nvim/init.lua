@@ -1,4 +1,8 @@
-vim.o.termguicolors = true
+vim.o.termguicolors = false
+vim.cmd.colorscheme("vim") 
+vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
+vim.cmd([[highlight NormalNC guibg=NONE ctermbg=NONE]])
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.confirm = true
@@ -13,7 +17,7 @@ vim.o.smartindent = true
 vim.o.tabstop = 4
 vim.o.shiftround = true
 vim.o.shiftwidth = 0
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "no"
 vim.o.undofile = true
 vim.o.undolevels = 10000
 vim.g.netrw_banner = 0
@@ -29,8 +33,8 @@ vim.opt.listchars = {
 	extends = "»",
 	precedes = "«",
 }
-vim.o.background = 'dark'
-vim.cmd("colorscheme lunaperche")
+-- vim.o.background = 'dark'
+-- vim.cmd("colorscheme lunaperche")
 -- lunaperche delek pablo unokai zaibatsu
 -- vim.pack.add({{src = "https://github.com/scottmckendry/cyberdream.nvim", name = "cyberdream"}})
 -- require("cyberdream").setup({variant = "auto", transparent = true})

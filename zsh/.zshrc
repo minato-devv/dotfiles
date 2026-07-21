@@ -48,7 +48,7 @@ alias fm-kill='pkill -f "fm serve"'
 alias pysour='source .venv/bin/activate'
 alias pyvenv='python3 -m venv .venv && pysour'
 
-alias vencord='${HOME}/Installer/vencordinstaller'
+alias vencord='${HOME}/Dev/Installer/vencordinstaller'
 
 alias fcommit='fabric -p create_git_diff_commit'
 
