@@ -9,7 +9,7 @@ create_symlink() {
 		return 1
 	fi
 
-	ln -s "$PWD/$target" "$HOME/$link_name"
+	ln -s "$target" "$link_name"
 }
 
 create_symlink "$1" "$2"
