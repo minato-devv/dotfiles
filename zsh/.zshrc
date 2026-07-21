@@ -39,10 +39,10 @@ alias ff='fastfetch'
 alias tree='fd -d 2'
 alias du='du -sh'
 alias size='du -sh * | sort -hr'
-alias top='top -stats mem,cpu,command,state,time,power -o -mem -s 2 -U user'
+alias top='top -stats pid,mem,cpu,command,state,time,power -o -mem -s 2 -U user'
 
-alias fm-server='fm serve > ${HOME}/logs/fm.log 2>&1 &'
-alias kill-fm='pkill -f "fm serve"'
+alias fm-serve='stdbuf -oL -eL fm serve >> ${HOME}/logs/fm.log 2>&1 &'
+alias fm-kill='pkill -f "fm serve"'
 
 alias pysour='source .venv/bin/activate'
 alias pyvenv='python3 -m venv .venv && pysour'
