@@ -15,6 +15,7 @@ setopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt AUTO_PUSHD
 setopt CHASE_LINKS
+setopt PROMPT_SUBST
 
 autoload -U compinit
 compinit
@@ -22,7 +23,14 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' file-list all
 zstyle ':completion:*' file-sort change
 
-# export PROMPT='%w %3~ »»» '
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWCONFLICTSTATE=yes
+export PS1='%w %3~$(__git_ps1 " (%s)") »»» '
+source $ZDOTDIR/git-prompt.sh
 
 # Editing
 alias ei='${EDITOR} $ZDOTDIR/.zshrc'
