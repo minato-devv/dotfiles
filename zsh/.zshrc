@@ -2,7 +2,7 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
 
-setopt EXTENDED_HISTORY 
+setopt EXTENDED_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
@@ -28,14 +28,11 @@ zstyle ':vcs_info:git:*' stagedstr '+'
 zstyle ':vcs_info:git:*' unstagedstr '*'
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*' file-list all
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion:*' list-dirs-first true
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' file-patterns '*(D):files'
 
 export PS1='%d${vcs_info_msg_0_} %# '
 export RPROMPT='%h'
@@ -46,15 +43,16 @@ alias ev='${EDITOR} $HOME/.zshenv'
 alias ci='cat $ZDOTDIR/.zshrc'
 alias cv='cat $HOME/.zshenv'
 
-alias z='exec zsh -li'
+alias si='source $ZDOTDIR/.zshrc'
+alias sv='source $HOME/.zshenv'
+alias z='exec zsh'
 
 alias ls='ls -AGCh'
 alias cat='bat'
+alias vim='nvim'
 alias e='$EDITOR'
 
 alias ff='fastfetch'
-alias tree='fd -d 2'
-alias du='du -sh'
 alias size='du -sh * | sort -hr'
 alias top='top -stats pid,mem,cpu,command,state,time,power -o -mem -s 2 -U user'
 
@@ -75,10 +73,11 @@ alias path='print -l $path'
 alias fpath='print -l $fpath'
 alias fd='fd -H'
 
-pcopy() { 
+pc() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
 	echo "Copied location of $1 to clipboard"
 }
+
 backupdir() {
 	local src="$1"
 	local dest="${2:-$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/backups}"

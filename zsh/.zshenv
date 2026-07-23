@@ -1,7 +1,7 @@
 export VISUAL='nvim'
 export EDITOR='nvim'
 export PAGER='less'
-export LESS='-R -F -X'
+# export LESS='-R -X'
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
