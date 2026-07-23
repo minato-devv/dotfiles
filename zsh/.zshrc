@@ -75,3 +75,12 @@ pcopy() {
 	realpath "$1" | tr -d '\n' | pbcopy 
 	echo "Copied location of $1 to clipboard"
 }
+backupdir() {
+	local src="$1"
+	local dest="${2:-$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/backups}"
+	local name="$(basename "$src")-backup-$(date +%F-%H%M%S)"
+
+	mkdir -p "$dest" || return 1
+	cp -a "$src" "$dest/$name"
+	echo "Backup created: $dest/$name"
+}
