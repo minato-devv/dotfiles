@@ -1,36 +1,35 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
 
 setopt EXTENDED_HISTORY 
 setopt APPEND_HISTORY 
-setopt INC_APPEND_HISTORY 
-setopt SHARE_HISTORY 
-setopt HIST_IGNORE_DUPS 
-setopt HIST_IGNORE_SPACE 
-setopt HIST_NO_STORE 
-setopt CORRECT 
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt CORRECT
 setopt COMPLETE_IN_WORD
-setopt AUTO_PUSHD
 setopt CHASE_LINKS
 setopt PROMPT_SUBST
+setopt HIST_VERIFY
 
-autoload -U compinit
+autoload -Uz compinit vcs_info
 compinit
+
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' (%S|%b %u%c)'
+zstyle ':vcs_info:git:*' actionformats ' (%S|%b %a%u%c)'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' unstagedstr '*'
+
 zstyle ':completion:*' menu select
 zstyle ':completion:*' file-list all
 zstyle ':completion:*' file-sort change
 
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM="auto"
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_SHOWCONFLICTSTATE=yes
-export PS1='%w %3~$(__git_ps1 " (%s)") »»» '
-source $ZDOTDIR/git-prompt.sh
+export PS1='%d${vcs_info_msg_0_} %# '
 
 # Editing
 alias ei='${EDITOR} $ZDOTDIR/.zshrc'
