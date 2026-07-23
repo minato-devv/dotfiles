@@ -1,5 +1,7 @@
+export VISUAL='nvim'
 export EDITOR='nvim'
 export PAGER='less'
+export LESS='-R -F -X'
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -11,7 +13,6 @@ export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 # fi
 
 typeset -U path fpath
-eval "$(/opt/homebrew/bin/brew shellenv)"
 path=("${HOME}/.lmstudio/bin" $path)
 path=("${HOME}/llama.cpp/build/bin" $path)
 path=("${HOME}/Dev/Fabric" $path)
@@ -23,3 +24,4 @@ export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export BAT_THEME="ansi"
 export CONTAINER_DEBUG=1
+export CLICOLOR=1

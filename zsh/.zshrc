@@ -3,23 +3,25 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 setopt EXTENDED_HISTORY 
-setopt APPEND_HISTORY 
-setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_NO_STORE
-setopt CORRECT
-setopt COMPLETE_IN_WORD
-setopt CHASE_LINKS
-setopt PROMPT_SUBST
+setopt HIST_FIND_NO_DUPS
 setopt HIST_VERIFY
 
-autoload -Uz compinit vcs_info
+setopt COMPLETE_IN_WORD
+setopt INTERACTIVE_COMMENTS
+setopt NO_BEEP
+setopt CHASE_LINKS
+setopt PROMPT_SUBST
+setopt CDABLE_VARS
+
+autoload -Uz compinit vcs_info add-zsh-hook
 compinit
 
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' (%S|%b %u%c)'
+add-zsh-hook precmd vcs_info
+zstyle ':vcs_info:git:*' formats ' (%S [%b] %u%c)'
 zstyle ':vcs_info:git:*' actionformats ' (%S|%b %a%u%c)'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr '+'
@@ -27,23 +29,28 @@ zstyle ':vcs_info:git:*' unstagedstr '*'
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' file-list all
-zstyle ':completion:*' file-sort change
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+zstyle ':completion:*' list-dirs-first true
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' file-patterns '*(D):files'
 
 export PS1='%d${vcs_info_msg_0_} %# '
+export RPROMPT='%h'
 
-# Editing
 alias ei='${EDITOR} $ZDOTDIR/.zshrc'
 alias ev='${EDITOR} $HOME/.zshenv'
 
-# Viewing
 alias ci='cat $ZDOTDIR/.zshrc'
 alias cv='cat $HOME/.zshenv'
-# Sourcing
+
 alias z='exec zsh -li'
 
-alias ls='eza -A --group-directories-first --hyperlink always --icons always'
+alias ls='ls -AGCh'
 alias cat='bat'
-alias vim='nvim'
+alias e='$EDITOR'
 
 alias ff='fastfetch'
 alias tree='fd -d 2'
@@ -57,17 +64,15 @@ alias fm-kill='pkill -f "fm serve"'
 alias pysour='source .venv/bin/activate'
 alias pyvenv='python3 -m venv .venv && pysour'
 
-alias vencord='${HOME}/Dev/Installer/vencordinstaller'
-
-alias fcommit='fabric -p create_git_diff_commit'
+alias com='fabric -p create_git_diff_commit'
 
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
 alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
-alias rm-all-images='container image ls --format yaml | rg "^ {4}name:" | sed -E 's/^.{10}//' | xargs -P 4 container image rm'
 
 alias pi='container run -it  --rm -v "$PWD:/home/node/workspace" -v ~/Dev/pi-container/pi-agent:/home/node/.pi/agent pi-coding-agent:local'
 
 alias path='print -l $path'
+alias fpath='print -l $fpath'
 alias fd='fd -H'
 
 pcopy() { 
