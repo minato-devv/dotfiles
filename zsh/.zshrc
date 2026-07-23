@@ -1,3 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
@@ -30,7 +32,7 @@ alias ev='${EDITOR} $HOME/.zshenv'
 alias ci='cat $ZDOTDIR/.zshrc'
 alias cv='cat $HOME/.zshenv'
 # Sourcing
-alias z='exec zsh -l'
+alias z='exec zsh -li'
 
 alias ls='eza -A --group-directories-first --hyperlink always --icons always'
 alias cat='bat'
@@ -58,8 +60,10 @@ alias rm-all-images='container image ls --format yaml | rg "^ {4}name:" | sed -E
 
 alias pi='container run -it  --rm -v "$PWD:/home/node/workspace" -v ~/Dev/pi-container/pi-agent:/home/node/.pi/agent pi-coding-agent:local'
 
+alias path='print -l $path'
+alias fd='fd -H'
+
 pcopy() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
 	echo "Copied location of $1 to clipboard"
 }
-

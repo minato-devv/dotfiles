@@ -1,6 +1,6 @@
 {
-  "default_layout": "vertical",
-  "theme": "gold",
-  "sort_column": 0,
-  "sort_reverse": true
+  "default_layout": "cpu_focus",
+  "theme": "crimson",
+  "sort_column": 6,
+  "sort_reverse": false
 }
