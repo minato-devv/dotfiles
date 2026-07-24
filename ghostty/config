@@ -1,4 +1,4 @@
-theme = Ubuntu
+theme = /Users/user/.config/ghostty/themes/rainy-nyc-night.conf
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
-font-size = 22
+font-size = 20

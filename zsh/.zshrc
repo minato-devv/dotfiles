@@ -58,6 +58,7 @@ alias top='top -stats pid,mem,cpu,command,state,time,power -o -mem -s 2 -U user'
 
 alias fm-serve='stdbuf -oL -eL fm serve >> ${HOME}/logs/fm.log 2>&1 &'
 alias fm-kill='pkill -f "fm serve"'
+alias fm-logs='tail -f $HOME/logs/fm.log'
 
 alias pysour='source .venv/bin/activate'
 alias pyvenv='python3 -m venv .venv && pysour'
@@ -72,6 +73,8 @@ alias pi='container run -it  --rm -v "$PWD:/home/node/workspace" -v ~/Dev/pi-con
 alias path='print -l $path'
 alias fpath='print -l $fpath'
 alias fd='fd -H'
+
+alias colors='for i in {0..15}; do printf "\e[48;5;${i}m  %2d  \e[0m " "$i"; (( (i+1) % 8 == 0 )) && echo; done; echo'
 
 pc() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
