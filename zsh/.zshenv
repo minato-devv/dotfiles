@@ -8,14 +8,18 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 
+export GOPATH="$HOME/.local/go"
+export GOBIN="$GOPATH/bin"
+export GOCACHE="$GOPATH/build"
+export GOMODCACHE="$GOPATH/mod"
+
 # if [ -x /usr/libexec/path_helper ]; then
 #     eval `/usr/libexec/path_helper -s`
 # fi
 
 typeset -U path fpath
-path=("${HOME}/.lmstudio/bin" $path)
 path=("${HOME}/llama.cpp/build/bin" $path)
-path=("${HOME}/Dev/Fabric" $path)
+path=("$GOBIN" "$HOME/.local/bin" $path)
 
 fpath=("$ZDOTDIR/completion" $fpath)
 
