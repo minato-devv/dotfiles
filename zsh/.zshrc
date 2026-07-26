@@ -56,7 +56,7 @@ alias ff='fastfetch'
 alias size='du -sh * | sort -hr'
 alias top='top -stats pid,mem,cpu,command,state,time,power -o -mem -s 2 -U user'
 
-alias fm-serve='stdbuf -oL -eL fm serve >> ${HOME}/logs/fm.log 2>&1 &'
+alias fm-serve='stdbuf -oL -eL fm serve > ${HOME}/logs/fm.log 2>&1 &'
 alias fm-kill='pkill -f "fm serve"'
 alias fm-logs='tail -f $HOME/logs/fm.log'
 
