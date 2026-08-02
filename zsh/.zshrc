@@ -75,6 +75,9 @@ alias fpath='print -l $fpath'
 alias fd='fd -H'
 
 alias colors='for i in {0..15}; do printf "\e[48;5;${i}m  %2d  \e[0m " "$i"; (( (i+1) % 8 == 0 )) && echo; done; echo'
+alias ts='tailscale'
+
+alias add-all-repos-gita='gita add ./*'
 
 pc() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
@@ -89,4 +92,8 @@ backupdir() {
 	mkdir -p "$dest" || return 1
 	cp -a "$src" "$dest/$name"
 	echo "Backup created: $dest/$name"
+}
+
+mkcd() {
+	mkdir -p "$1" && cd "$1"
 }

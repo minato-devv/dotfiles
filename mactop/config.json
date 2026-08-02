@@ -1,5 +1,5 @@
 {
-  "default_layout": "default",
+  "default_layout": "cpu_focus",
   "theme": "crimson",
   "sort_column": 4,
   "sort_reverse": false
