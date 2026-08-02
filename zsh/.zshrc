@@ -21,8 +21,8 @@ autoload -Uz compinit vcs_info add-zsh-hook
 compinit
 
 add-zsh-hook precmd vcs_info
-zstyle ':vcs_info:git:*' formats ' (%S [%b] %u%c)'
-zstyle ':vcs_info:git:*' actionformats ' (%S|%b %a%u%c)'
+zstyle ':vcs_info:git:*' formats ' (%b [%u%c])'
+zstyle ':vcs_info:git:*' actionformats ' (%b [%a%u%c])'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr '+'
 zstyle ':vcs_info:git:*' unstagedstr '*'
