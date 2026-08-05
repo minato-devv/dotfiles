@@ -12,7 +12,7 @@
 	pl = pull
 [core]
 	editor = nvim
-	excludesfile = .gitignore_global
+	excludesFile = ~/.gitignore_global
 [init]
 	defaultBranch = main
 [pull]
