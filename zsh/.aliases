@@ -1,0 +1,99 @@
+make_alias() {
+	echo "alias $1='$2'" >> $ZDOTDIR/.aliases
+	source $ZDOTDIR/.aliases
+}
+
+alias ls='ls -lASh'
+alias l='du -sh .* * | sort -h'
+
+alias cat='bat'
+alias vim='nvim'
+
+alias ff='fastfetch'
+alias fd='fd -H'
+
+alias -g lctl='launchctl'
+
+user-services() {
+    launchctl print gui/$(id -u) | grep -v com.apple
+}
+
+system-services() {
+    sudo launchctl print system | grep -v com.apple
+}
+
+enable-user-service() {
+    if [ -z "$1" ]; then
+        echo "Usage: enable-user-service <service-target>"
+        return 1
+    fi
+    launchctl enable gui/$(id -u)/$1
+}
+
+bootstrap-user-service() {
+    if [ -z "$1" ]; then
+        echo "Usage: bootstrap-user-service <plist-filename>"
+        return 1
+    fi
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/$1
+}
+
+alias show-dns-servers='networksetup -getdnsservers 'Wi-Fi''
+alias show-search-domains='networksetup -getsearchdomains 'Wi-Fi''
+
+alias com='fabric -p create_git_diff_commit'
+
+alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
+alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
+
+alias path='print -l $path'
+alias fpath='print -l $fpath'
+
+alias ts='tailscale'
+
+copypath() { 
+	realpath "$1" | tr -d '\n' | pbcopy 
+	echo "Copied location of $1 to clipboard"
+}
+
+backupdir() {
+	local src="$1"
+	local dest="${2:-$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/backups}"
+	local name="$(basename "$src")-backup-$(date +%F-%H%M%S)"
+
+	mkdir -p "$dest" || return 1
+	cp -a "$src" "$dest/$name"
+	echo "Backup created: $dest/$name"
+}
+
+mkcd() {
+	mkdir -p "$1" && cd "$1"
+}
+zcfg() {
+	if [[ "$1" == "reset" ]]; then
+		echo "Reloading shell..."
+		exec zsh
+	fi
+
+    local file
+    case "$1" in
+        i|rc)  file="$ZDOTDIR/.zshrc" ;;
+        v|env) file="$HOME/.zshenv" ;;
+        p|pro) file="$ZDOTDIR/.zprofile" ;;
+        a|alias) file="$ZDOTDIR/.aliases" ;;
+        *)     echo "Usage: zcfg [i|v|p|a] [source]"; return 1 ;;
+    esac
+
+	case "$2" in
+		source) source "$file" && echo "Sourced $file" ;;
+		edit|"") "${EDITOR:-nvim}" "$file" && echo "Edited $file" ;;
+		view)
+			if command -v bat > /dev/null; then
+				bat "$file"
+			else
+				\cat "$file"
+			fi
+			;;
+		*) echo "Unknown action: $2" ;;
+	esac
+}
