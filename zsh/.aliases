@@ -69,7 +69,7 @@ backupdir() {
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
-zcfg() {
+z() {
 	if [[ "$1" == "reset" ]]; then
 		echo "Reloading shell..."
 		exec zsh
@@ -81,7 +81,7 @@ zcfg() {
         v|env) file="$HOME/.zshenv" ;;
         p|pro) file="$ZDOTDIR/.zprofile" ;;
         a|alias) file="$ZDOTDIR/.aliases" ;;
-        *)     echo "Usage: zcfg [i|v|p|a] [source]"; return 1 ;;
+        *) echo "Usage: z [i|v|p|a] [source|edit|view] (Default: edit)"; return 1 ;;
     esac
 
 	case "$2" in
