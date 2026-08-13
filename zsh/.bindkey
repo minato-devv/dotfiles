@@ -11,6 +11,7 @@ $b '^[[B' down-line-or-history
 $b '^V' quoted-insert
 $b '^P' describe-key-briefly
 $b '^I' expand-or-complete
+$b '^[[200~' bracketed-paste
 
 $b '^L' forward-char
 $b '^H' backward-char
