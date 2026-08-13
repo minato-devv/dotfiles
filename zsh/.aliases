@@ -1,14 +1,7 @@
-make_alias() {
-	local alias=$1
-	local cmd=$2
-	echo "alias $alias='$cmd'" >> $ZDOTDIR/.aliases
-	source $ZDOTDIR/.aliases
-}
-
 alias ls='ls -la --color=auto'
-alias la='ls -lAthr'
 alias l='du -sh .* * | sort -h'
 
+alias grep='ggrep'
 alias cat='bat'
 alias vim='nvim'
 
@@ -72,6 +65,14 @@ backupdir() {
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
+
+make_alias() {
+	local alias=$1
+	local cmd=$2
+	echo "alias $alias='$cmd'" >> $ZDOTDIR/.aliases
+	source $ZDOTDIR/.aliases
+}
+
 z() {
 	if [[ "$1" == "reset" || "$1" == "r" ]]; then
 		echo "Reloading shell..."
@@ -106,3 +107,29 @@ alias icloud='cd $HOME/Library/Mobile Documents/com~apple~CloudDocs'
 
 alias lastmod='find . \( -type f -exec ls -lrt {} + \) -o -name '.git' -prune'
 alias cleardir='find . -not \( -name . -o -name .. \) -exec rm -rf {} +'
+alias findemails="ggrep -IP '[a-zA-Z0-9._+%-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}'"
+alias redactemail="sed -Ei '' 's/[a-zA-Z0-9._+%-]+(@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})/[REDACTED]\1/g'"
+alias findphonenumbers="ggrep -sIP '(?<!\d)(?:\+\d{1,3}[- ]?)?(?:\([2-9](?!11)\d{2}\) ?[2-9]\d{2}[- ]?\d{4}|[2-9]\d{2}([- ]?)[2-9]\d{2}\1\d{4})(?!\d)'"
+alias findphonenumbers_strict="ggrep -sIP '(?<!\d)(?:\+\d{1,3} )?(?:\([2-9](?!11)\d{2}\) ?[2-9]\d{2}[- ]?\d{4}|[2-9]\d{2}([- ])[2-9]\d{2}\1\d{4})(?!\d)'"
+
+find_sensitive_info() {
+	local emails="$(findemails -nH -R .)"
+	local phones="$(findphonenumbers_strict -nH -R .)"
+
+	read "ne?Choose number of lines in emails: "
+	read "np?Choose number of lines in phone numbers: "
+
+	if (( ne > 0 && np > 0 )); then
+		echo "\n============ Identified emails ============"
+		echo "$emails" | head -n $ne
+		echo "==========================================="
+		echo "\n======== Identified phone numbers ========="
+		echo "$phones" | head -n $np
+		echo "==========================================="
+		echo "\nDone..."
+		return 0
+	else
+		echo "Values of 0 are not allowed.\nExiting..."
+		return 1
+	fi
+}

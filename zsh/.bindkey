@@ -13,6 +13,10 @@ $b '^P' describe-key-briefly
 $b '^I' complete-word
 $b '^[[200~' bracketed-paste
 
+$b '^Xa' _expand_alias
+$b '^Xw' expand-word
+$b '^X*' '^Xa^Xw'
+
 $b '^L' forward-char
 $b '^H' backward-char
 $b '^K' up-line-or-history
@@ -23,7 +27,7 @@ $b '^E' end-of-line
 
 $b '^X' kill-whole-line
 $b '^R' history-incremental-search-backward
-$b '^[' clear-screen
+# $b '^[' clear-screen
 
 get_temps() {
 	zle -I
