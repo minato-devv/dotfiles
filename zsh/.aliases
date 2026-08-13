@@ -133,3 +133,5 @@ find_sensitive_info() {
 		return 1
 	fi
 }
+
+alias giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?/https:\/\/github.com\/\2\.git/'"
