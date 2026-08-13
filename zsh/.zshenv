@@ -22,3 +22,5 @@ export CLICOLOR=1
 export OLLAMA_FLASH_ATTENTION=1
 export OLLAMA_KV_CACHE_TYPE="q8_0"
 export OLLAMA_USE_MLX=1
+
+export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
