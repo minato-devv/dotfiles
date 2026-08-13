@@ -1,37 +1,32 @@
-source "$XDG_CONFIG_HOME/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
+# `history envs {{{
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
+# }}}
 
-setopt EXTENDED_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_NO_STORE
-setopt HIST_FIND_NO_DUPS
-setopt HIST_VERIFY
+# `opts {{{
+setopt extended_history
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_no_store
+setopt hist_find_no_dups
+setopt hist_verify
 
-setopt COMPLETE_IN_WORD
-setopt INTERACTIVE_COMMENTS
-setopt NO_BEEP
-setopt CHASE_LINKS
-setopt PROMPT_SUBST
-setopt CDABLE_VARS
+setopt complete_in_word
+setopt interactive_comments
+setopt no_beep
+setopt chase_links
+setopt prompt_subst
+setopt cdable_vars
+setopt ignore_eof
+# }}}
 
-bindkey -e
-
+# `modules & completion {{{
 autoload -Uz compinit vcs_info add-zsh-hook edit-command-line
-zle -N edit-command-line
-bindkey '^X^E' edit-command-line
-compinit
-
 add-zsh-hook precmd vcs_info
-zstyle ':vcs_info:git:*' formats ' (%b [%u%c])'
-zstyle ':vcs_info:git:*' actionformats ' (%b [%a%u%c])'
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr '+'
-zstyle ':vcs_info:git:*' unstagedstr '*'
+zle -N edit-command-line
+compinit
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
@@ -39,6 +34,19 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion:*' list-dirs-first true
+# }}}
 
-export PS1='[%h] %~${vcs_info_msg_0_} %# '
+# `prompt {{{
+zstyle ':vcs_info:git:*' formats ' (%b [%u%c])'
+zstyle ':vcs_info:git:*' actionformats ' (%b [%a%u%c])'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' unstagedstr '*'
+export PS1='[%? | %!] %~${vcs_info_msg_0_} %# '
+# }}}
+
+# `aliases & keybinds {{{
 source "$ZDOTDIR/.aliases"
+source "$ZDOTDIR/.bindkey"
+# source "$XDG_CONFIG_HOME/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# }}}

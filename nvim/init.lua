@@ -3,6 +3,8 @@ vim.cmd.colorscheme("vim")
 vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
 vim.cmd([[highlight NormalNC guibg=NONE ctermbg=NONE]])
 
+vim.opt.foldmethod = 'marker'
+vim.opt.foldlevelstart = 99
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.confirm = true

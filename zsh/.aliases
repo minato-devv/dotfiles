@@ -70,7 +70,7 @@ mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
 z() {
-	if [[ "$1" == "reset" ]]; then
+	if [[ "$1" == "reset" || "$1" == "r" ]]; then
 		echo "Reloading shell..."
 		exec zsh
 	fi
@@ -81,13 +81,14 @@ z() {
         v|env) file="$HOME/.zshenv" ;;
         p|pro) file="$ZDOTDIR/.zprofile" ;;
         a|alias) file="$ZDOTDIR/.aliases" ;;
-        *) echo "Usage: z [i|v|p|a] [source|edit|view] (Default: edit)"; return 1 ;;
+		b|bindkey) file="$ZDOTDIR/.bindkey" ;;
+        *) echo "Usage: z [i/rc | v/env p/profile a/alias | b/bindkey] [s/source | e/edit| c/concatenate] (Default: edit)"; return 1 ;;
     esac
 
 	case "$2" in
-		source) source "$file" && echo "Sourced $file" ;;
-		edit|"") "${EDITOR:-nvim}" "$file" && echo "Edited $file" ;;
-		view)
+		s|source) source "$file" && echo "Sourced $file" ;;
+		e|edit|"") "${EDITOR:-nvim}" "$file" && echo "Edited $file" ;;
+		c|concatenate)
 			if command -v bat > /dev/null; then
 				bat "$file"
 			else

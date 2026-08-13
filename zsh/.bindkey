@@ -1,0 +1,55 @@
+bindkey -N mymap .safe # Create a new keymap based on the .safe keymap
+bindkey -A mymap main # Alias mymap to main to set as active keymap
+
+b=(bindkey -M mymap) # Array variable for easier binding
+
+$b '^[[C' forward-char
+$b '^[[D' backward-char
+$b '^?' backward-delete-char
+$b '^[[A' up-line-or-history
+$b '^[[B' down-line-or-history
+$b '^V' quoted-insert
+$b '^P' describe-key-briefly
+$b '^I' expand-or-complete
+
+$b '^L' forward-char
+$b '^H' backward-char
+$b '^K' up-line-or-history
+$b '^J' down-line-or-history
+
+$b '^A' beginning-of-line
+$b '^E' end-of-line
+
+$b '^X' kill-whole-line
+$b '^R' history-incremental-search-backward
+$b '^D' clear-screen
+
+# Keybinds related to zsh-autosuggestions
+# $b '^@' autosuggest-accept
+# $b '^[[27;5;13~' autosuggest-execute
+# $b '^F' autosuggest-fetch
+# $b '^T' autosuggest-toggle
+
+get_temps() {
+	zle -I
+	local cpu_temp=$(smctemp -c 2>/dev/null)
+	local gpu_temp=$(smctemp -g 2>/dev/null)
+	echo "CPU: $cpu_temp | GPU: $gpu_temp"
+}
+zle -N get_temps
+$b '^O' get_temps
+
+update_homebrew() {
+	zle -I
+	brew update
+	brew upgrade --greedy
+	brew autoremove
+	brew cleanup --prune=all
+	brew bundle dump --force --file ~/.homebrew/Brewfile
+	echo "Completed homebrew and package upgrades..."
+}
+zle -N update_homebrew
+$b '^Y' update_homebrew
+
+# export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
+# _zsh_autosuggest_bind_widgets
