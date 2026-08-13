@@ -10,7 +10,7 @@ $b '^[[A' up-line-or-history
 $b '^[[B' down-line-or-history
 $b '^V' quoted-insert
 $b '^P' describe-key-briefly
-$b '^I' expand-or-complete
+$b '^I' complete-word
 $b '^[[200~' bracketed-paste
 
 $b '^L' forward-char
@@ -23,13 +23,7 @@ $b '^E' end-of-line
 
 $b '^X' kill-whole-line
 $b '^R' history-incremental-search-backward
-$b '^D' clear-screen
-
-# Keybinds related to zsh-autosuggestions
-# $b '^@' autosuggest-accept
-# $b '^[[27;5;13~' autosuggest-execute
-# $b '^F' autosuggest-fetch
-# $b '^T' autosuggest-toggle
+$b '^[' clear-screen
 
 get_temps() {
 	zle -I
@@ -51,6 +45,3 @@ update_homebrew() {
 }
 zle -N update_homebrew
 $b '^Y' update_homebrew
-
-# export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
-# _zsh_autosuggest_bind_widgets

@@ -1,7 +1,6 @@
 export VISUAL='nvim'
 export EDITOR='nvim'
 export PAGER='less'
-# export LESS='-R -X'
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -19,9 +18,6 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 export BAT_THEME="ansi"
 export CONTAINER_DEBUG=1
 export CLICOLOR=1
-
-export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
-export DOTFILES="$HOME/Dev/dotfiles"
 
 export OLLAMA_FLASH_ATTENTION=1
 export OLLAMA_KV_CACHE_TYPE="q8_0"

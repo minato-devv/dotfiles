@@ -13,6 +13,7 @@ setopt hist_no_store
 setopt hist_find_no_dups
 setopt hist_verify
 
+setopt extended_glob null_glob
 setopt complete_in_word
 setopt interactive_comments
 setopt no_beep
@@ -48,5 +49,5 @@ export PS1='[%? | %!] %~${vcs_info_msg_0_} %# '
 # `aliases & keybinds {{{
 source "$ZDOTDIR/.aliases"
 source "$ZDOTDIR/.bindkey"
-# source "$XDG_CONFIG_HOME/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZDOTDIR/plugins/git.zsh"
 # }}}
