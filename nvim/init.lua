@@ -7,8 +7,8 @@ vim.opt.cursorlineopt = "line"
 vim.opt.statuscolumn = "%s %{v:lnum} %{v:relnum} "
 vim.opt.termguicolors = false
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none' })
-vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 13 })
-vim.api.nvim_set_hl(0, 'CursorColumn', { ctermbg = 13 })
+vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 12 })
+vim.api.nvim_set_hl(0, 'CursorColumn', { ctermbg = 12 })
 vim.api.nvim_set_hl(0, 'SignColumn', { ctermbg = 'none' })
 vim.opt.foldmethod = 'marker'
 vim.opt.foldlevelstart = 99
