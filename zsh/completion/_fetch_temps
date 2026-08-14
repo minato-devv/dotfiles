@@ -1,0 +1,4 @@
+#compdef fetch_temps
+local -a options
+options=('cpu' 'gpu' 'all')
+_describe 'target' options

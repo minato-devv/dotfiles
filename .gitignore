@@ -3,3 +3,4 @@ fabric/
 nvim/nvim-pack-lock.json
 .gitconfig_private
 mactop/config.json
+zsh/.zcompdump

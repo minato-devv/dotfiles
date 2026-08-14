@@ -87,19 +87,14 @@ z() {
         a|alias) file="$ZDOTDIR/.aliases" ;;
 		b|bindkey) file="$ZDOTDIR/.bindkey" ;;
 		g|ghost) file="$XDG_CONFIG_HOME/ghostty/config" ;;
-        *) echo "Usage: z [i/rc | v/env p/profile a/alias | b/bindkey | g/ghost] [s/source | e/edit| c/concatenate] (Default: edit)"; return 1 ;;
+        *) echo "Usage: z [i/rc | v/env p/profile a/alias | b/bindkey | g/ghost] [s/source | e/edit| c/cat | b/bat] (Default: edit)"; return 1 ;;
     esac
 
 	case "$2" in
 		s|source) source "$file" && echo "Sourced $file" ;;
 		e|edit|"") "${EDITOR:-nvim}" "$file" && echo "Edited $file" ;;
-		c|concatenate)
-			if command -v bat > /dev/null; then
-				bat "$file"
-			else
-				\cat "$file"
-			fi
-			;;
+		c|cat) \cat "$file" ;;
+		b|bat) bat "$file" ;;
 		*) echo "Unknown action: $2" ;;
 	esac
 }
@@ -159,3 +154,4 @@ colors() {
 		echo
 done
 }
+alias gcaf='git commit --all -F - <<EOF'
