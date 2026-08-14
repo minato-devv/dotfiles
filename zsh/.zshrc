@@ -17,29 +17,41 @@ setopt prompt_subst
 setopt cdable_vars
 setopt ignore_eof
 
-autoload -Uz compinit  && compinit
 autoload -Uz add-zsh-hook
 
-autoload -Uz fetch_temps
-export PERIOD=10
-prompt_temps() { fetch_temps all; }
-add-zsh-hook periodic prompt_temps
+autoload -Uz compinit  && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+zstyle ':completion:*' list-dirs-first true
+
+# autoload -Uz fetch_temps
+# export PERIOD=10
+# prompt_temps() { fetch_temps all; }
+# add-zsh-hook periodic prompt_temps
 
 autoload -Uz vcs_info 
 add-zsh-hook precmd vcs_info
 
-zstyle ':completion:*' menu select
-zstyle ':completion:*' rehash true
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
-zstyle ':completion:*' list-dirs-first true
-zstyle ':vcs_info:git:*' formats ' (%b%u%c)'
-zstyle ':vcs_info:git:*' actionformats ' (%b%a%u%c)'
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr '+'
-zstyle ':vcs_info:git:*' unstagedstr '*'
-export PS1='${TEMP_INFO} [%? | %!] %~${vcs_info_msg_0_} %# '
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats ' (%b%c%u)'
+zstyle ':vcs_info:*' actionformats ' (%b%c%u%a)'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:*' unstagedstr '*'
++vi-git-untracked() {
+    if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]] && \
+		git status --porcelain | /usr/bin/grep -q '??'; then
+        hook_com[unstaged]+='?'
+	else
+		hook_com[unstaged]+='='
+    fi
+}
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+
+export PS1='%~${vcs_info_msg_0_} %# '
 source "$ZDOTDIR/.aliases"
 bindkey -v
 source "$ZDOTDIR/plugins/git.plugin.zsh"
