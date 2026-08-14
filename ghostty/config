@@ -1,6 +1,10 @@
-theme = /Users/user/.config/ghostty/themes/rainy-nyc-night.conf
+# theme = /Users/user/.config/ghostty/themes/rainy-nyc-night.conf
+theme = catppuccin macchiato
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
 font-size = 20
 font-family = JetBrainsMono Nerd Font Mono
 keybind = ctrl+d=unbind
+keybind = global:option+super+enter=new_window
+background-opacity = 0.85
+background-opacity-cells = true

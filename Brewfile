@@ -14,10 +14,14 @@ brew "gh"
 brew "git"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# GNU grep, egrep and fgrep
+brew "grep"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.14"
 # Client library for huggingface.co hub
 brew "hf"
+# Language Server for the Lua language
+brew "lua-language-server"
 # Apple Silicon Monitor Top written in Go Lang
 brew "mactop"
 # Utility for directing compilation
@@ -30,6 +34,8 @@ brew "ninja"
 brew "node"
 # Command-line Git information tool
 brew "onefetch"
+# Static type checker for Python
+brew "pyright"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # macOS command-line tool to work with default apps

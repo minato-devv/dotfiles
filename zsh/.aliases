@@ -140,3 +140,21 @@ alias gitrem='open $(giturl)'
 list_repos() {
 	find $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
 }
+
+container_ls() {for a in '' 'i' 'n' 'v' 'm'; do container $a ls; done}
+
+colors() {
+	for i in {0..7}; do
+		for offset in 0 8; do
+			idx=$((i + offset))
+			stty -echo
+			printf "\e]4;$idx;?\a"
+			read -d $'\a' hex
+			stty echo
+			hex=$(echo "$hex" | sed -n 's/.*rgb:\(..\)[0-9a-fA-F]*\/\(..\)[0-9a-fA-F]*\/\(..\)[0-9a-fA-F]*.*/#\1\2\3/p')
+			
+			printf "\e[48;5;${idx}m  \e[0m \e[1m%2d\e[0m: %s   " "$idx" "$hex"
+		done
+		echo
+done
+}
