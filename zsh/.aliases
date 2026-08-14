@@ -1,7 +1,7 @@
 alias ls='ls -a --color=auto'
 alias l='du -sh .* * | sort -h'
 
-alias grep='ggrep'
+alias grep='ggrep -P'
 alias cat='bat'
 alias vim='nvim'
 

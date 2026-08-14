@@ -21,7 +21,7 @@ autoload -Uz compinit  && compinit
 autoload -Uz add-zsh-hook
 
 autoload -Uz fetch_temps
-export PERIOD=3
+export PERIOD=10
 prompt_temps() { fetch_temps all; }
 add-zsh-hook periodic prompt_temps
 
