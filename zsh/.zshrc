@@ -42,28 +42,27 @@ add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats ' (%b %c%u)'
-zstyle ':vcs_info:*' actionformats ' (%b%c%u%a)'
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' unstagedstr '*'
-+vi-git-untracked() {
-    if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]] && \
-		git status --porcelain | /usr/bin/grep -q '??'; then
-        hook_com[unstaged]+='?'
-    fi
-}
-+vi-git-aheadbehind() {
+zstyle ':vcs_info:*' formats ' %m'
+zstyle ':vcs_info:*' actionformats ' %m (%a)'
+
++vi-git-format-array() {
+	local -a git_items git_aheadbehind
+    git_items+=("${hook_com[branch]}")
     local ahead behind
-    local -a gitstatus
+
     ahead=$(git rev-list --count @{upstream}..HEAD 2>/dev/null)
     behind=$(git rev-list --count HEAD..@{upstream} 2>/dev/null)
-    [[ $ahead -gt 0 ]] && gitstatus+=( "↑$ahead" )
-    [[ $behind -gt 0 ]] && gitstatus+=( "↓$behind" )
-    if [[ ${#gitstatus} -gt 0 ]]; then
-		hook_com[branch]+=" (${(j: :)gitstatus})"
-    fi
+    [[ $ahead -gt 0 ]] && git_aheadbehind+=("↑$ahead")
+    [[ $behind -gt 0 ]] && git_aheadbehind+=("↓$behind")
+	[[ -n "${git_aheadbehind}" ]] && git_items+=("${(j::)git_aheadbehind}")
+
+	git status --porcelain | /usr/bin/grep '??' | wc -l &>/dev/null && git_items+=("??")
+
+    [[ -n "${hook_com[staged]}" ]] && git_items+=("+${hook_com[staged]}")
+    [[ -n "${hook_com[unstaged]}" ]] && git_items+=("*${hook_com[unstaged]}")
+    hook_com[misc]="[${(j: :)git_items}]"
 }
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-aheadbehind
+zstyle ':vcs_info:git*+post-backend:*' hooks git-format-array
 
 export PS1='%~${vcs_info_msg_0_} %# '
 source "$ZDOTDIR/.aliases"
