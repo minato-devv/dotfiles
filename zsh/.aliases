@@ -76,7 +76,7 @@ make_alias() {
 z() {
 	if [[ "$1" == "reset" || "$1" == "r" ]]; then
 		echo "Reloading shell..."
-		exec zsh
+		exec zsh -il
 	fi
 
     local file
@@ -86,7 +86,8 @@ z() {
         p|pro) file="$ZDOTDIR/.zprofile" ;;
         a|alias) file="$ZDOTDIR/.aliases" ;;
 		b|bindkey) file="$ZDOTDIR/.bindkey" ;;
-        *) echo "Usage: z [i/rc | v/env p/profile a/alias | b/bindkey] [s/source | e/edit| c/concatenate] (Default: edit)"; return 1 ;;
+		g|ghost) file="$XDG_CONFIG_HOME/ghostty/config" ;;
+        *) echo "Usage: z [i/rc | v/env p/profile a/alias | b/bindkey | g/ghost] [s/source | e/edit| c/concatenate] (Default: edit)"; return 1 ;;
     esac
 
 	case "$2" in

@@ -1,5 +1,4 @@
-# theme = /Users/user/.config/ghostty/themes/rainy-nyc-night.conf
-theme = catppuccin macchiato
+theme = Front End Delight
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
 font-size = 20
