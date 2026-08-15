@@ -1,6 +1,7 @@
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
+
 setopt glob_dots
 setopt extended_history
 setopt share_history
@@ -23,14 +24,13 @@ autoload -Uz add-zsh-hook
 autoload -Uz compinit  && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
-# zstyle ':completion:*' list-dirs-first true
 zstyle ':completion:*' file-sort date
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
+# zstyle ':completion:*' list-dirs-first true
 
 autoload -Uz fetch_temps
 # export PERIOD=10
@@ -48,16 +48,18 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 +vi-git-format-array() {
 	local -a git_items git_aheadbehind
 	git_items+=("${hook_com[branch]}")
-	local ahead_count behind_count untracked_count
+	local ahead_count behind_count untracked_count staged_count unstaged_count
 
-	ahead_count=$(git rev-list --count @{upstream}..HEAD 2>/dev/null)
-	behind_count=$(git rev-list --count HEAD..@{upstream} 2>/dev/null)
+	ahead_count="$(git rev-list --count @{upstream}..HEAD 2>/dev/null)"
+	behind_count="$(git rev-list --count HEAD..@{upstream} 2>/dev/null)"
 	[[ $ahead_count -gt 0 ]] && git_aheadbehind+=("↑${ahead_count}")
 	[[ $behind_count -gt 0 ]] && git_aheadbehind+=("↓${behind_count}")
 	[[ -n "${git_aheadbehind}" ]] && git_items+=("${(j::)git_aheadbehind}")
 
-	[[ -n "${hook_com[staged]}" ]] && git_items+=("+${hook_com[staged]}")
-	[[ -n "${hook_com[unstaged]}" ]] && git_items+=("*${hook_com[unstaged]}")
+	staged_count="$(git diff --cached --numstat | wc -l | tr -d ' ')"
+	unstaged_count="$(git diff --name-only | wc -l | tr -d ' ')"
+	[[ "${staged_count}" -gt 0 ]] && git_items+=("+${staged_count}")
+	[[ "${unstaged_count}" -gt 0 ]] && git_items+=("*${unstaged_count}")
 
 	untracked_count="$(git status --porcelain | /usr/bin/grep -c '??')"
 	[[ $untracked_count -gt 0 ]] && git_items+=("?${untracked_count}")
@@ -65,8 +67,6 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 	hook_com[misc]="[${(j: :)git_items}]"
 }
 zstyle ':vcs_info:git*+post-backend:*' hooks git-format-array
-
-autoload -Uz zed
 
 export PS1='%~${vcs_info_msg_0_} %# '
 source "$ZDOTDIR/.aliases"

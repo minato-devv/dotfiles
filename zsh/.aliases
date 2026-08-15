@@ -1,4 +1,4 @@
-alias ls='ls -a --color=auto'
+alias ls='ls -A'
 alias l='du -sh .* * | sort -h'
 
 alias grep='ggrep -P'
@@ -99,6 +99,7 @@ z() {
 	esac
 }
 alias dot='cd $HOME/Dev/dotfiles'
+alias repo='cd $HOME/Dev'
 alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
 
 alias lastmod='find . \( -type f -exec ls -lrt {} + \) -o -name '.git' -prune'
@@ -156,3 +157,4 @@ done
 }
 alias gcaf='git commit --all -F - <<EOF'
 alias sed='sed -E'
+alias cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'"

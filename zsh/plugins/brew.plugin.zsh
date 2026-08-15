@@ -90,6 +90,6 @@ function brews() {
   local off="$(tput sgr0)"
 
   echo "${blue}==>${off} ${bold}Formulae${off}"
-  echo "${formulae}" | sed "s/^\(.*\):\(.*\)$/\1${blue}\2${off}/"
+  echo "${formulae}" | \sed -E "s/^(.*):(.*)$/\1${blue}\2${off}/"
   echo "\n${blue}==>${off} ${bold}Casks${off}\n${casks}"
 }
