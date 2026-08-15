@@ -1,4 +1,6 @@
 theme = Vercel
+background-blur = false
+macos-titlebar-style = transparent
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
 font-size = 20

@@ -155,3 +155,4 @@ colors() {
 done
 }
 alias gcaf='git commit --all -F - <<EOF'
+alias sed='sed -E'

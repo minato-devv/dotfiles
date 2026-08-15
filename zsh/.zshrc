@@ -66,7 +66,9 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 }
 zstyle ':vcs_info:git*+post-backend:*' hooks git-format-array
 
+autoload -Uz zed
+
 export PS1='%~${vcs_info_msg_0_} %# '
 source "$ZDOTDIR/.aliases"
 bindkey -v
-source "$ZDOTDIR/plugins/git.plugin.zsh"
+for i in $ZDOTDIR/plugins/*(.N); do source $i; done
