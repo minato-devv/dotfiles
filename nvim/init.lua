@@ -1,38 +1,44 @@
-vim.opt.signcolumn = 'yes'
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
-vim.opt.cursorlineopt = "line"
--- vim.opt.number = true
--- vim.opt.relativenumber = true
-vim.opt.statuscolumn = "%s %{v:lnum} %{v:relnum} "
-vim.opt.termguicolors = false
+local opt = vim.opt
+
+opt.showmode = false
+opt.virtualedit = "block"
+opt.signcolumn = 'yes'
+opt.cursorline = true
+opt.cursorcolumn = true
+opt.cursorlineopt = "line"
+-- opt.number = true
+-- opt.relativenumber = true
+opt.statuscolumn = "%s %{v:lnum} %{v:relnum} "
+opt.termguicolors = false
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none' })
 vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 12 })
 vim.api.nvim_set_hl(0, 'CursorColumn', { ctermbg = 12 })
 vim.api.nvim_set_hl(0, 'SignColumn', { ctermbg = 'none' })
-vim.opt.foldmethod = 'marker'
-vim.opt.foldlevelstart = 99
-vim.opt.scrolloff = 20
-vim.opt.sidescrolloff = 20
-vim.opt.linebreak = true
-vim.opt.wrap = true
-vim.opt.splitright = true
-vim.opt.list = true
-vim.opt.listchars = { tab = "| ", trail = "·", }
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.tabstop = 4
-vim.opt.shiftround = true
-vim.opt.shiftwidth = 0
-vim.opt.smartcase = true
-vim.opt.ignorecase = true
-vim.opt.inccommand = 'split'
-vim.opt.undofile = true
-vim.opt.undolevels = 10000
-vim.opt.clipboard = "unnamedplus"
-vim.opt.confirm = true
+opt.foldenable = true
+opt.foldmethod = 'expr'
+opt.foldlevelstart = 99
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.scrolloff = 20
+opt.sidescrolloff = 20
+opt.linebreak = true
+opt.wrap = true
+opt.splitright = true
+opt.list = true
+opt.listchars = { tab = "| ", trail = "·", }
+opt.autoindent = true
+opt.smartindent = true
+opt.tabstop = 4
+opt.shiftround = true
+opt.shiftwidth = 0
+opt.smartcase = true
+opt.ignorecase = true
+opt.inccommand = 'split'
+opt.undofile = true
+opt.undolevels = 10000
+opt.clipboard = "unnamedplus"
+opt.confirm = true
 vim.g.netrw_banner = 0
-vim.opt.mouse = ""
+opt.mouse = ""
 vim.g.mapleader = ' '
 
 -- Normal mode mappings
