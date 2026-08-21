@@ -21,7 +21,11 @@ setopt ignore_eof
 
 autoload -Uz add-zsh-hook
 
+zmodload zsh/complist
 autoload -Uz compinit  && compinit
+autoload -Uz colors && colors
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} ma=0\;33
+zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' rehash true
@@ -68,7 +72,13 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 }
 zstyle ':vcs_info:git*+post-backend:*' hooks git-format-array
 
-export PS1='%~${vcs_info_msg_0_} %# '
+# UPTIME="$(uptime | sed -E 's/^.*up ([^,]*).*/\1/')"
+# BATT="$(pmset -g batt | \grep -Eo '\d+%' | sed -E 's/%/%%/')"
+# DISK="$(df -h / | tail -1 | awk "{print \$4}" | head -1)"
+# MEM="$(vm_stat | awk "/Pages free/ {print \$3}" | sed -E 's/\.//')"
+export PROMPT='[%D{%d/%m/%y}] %n@%m %~${vcs_info_msg_0_} '
 source "$ZDOTDIR/.aliases"
-bindkey -v
+bindkey -e
+autoload -Uz edit-command-line && zle -N edit-command-line
+bindkey '^e' edit-command-line
 for i in $ZDOTDIR/plugins/*(.N); do source $i; done
