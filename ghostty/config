@@ -1,10 +1,11 @@
-theme = Glacier
+theme = Kibble
 # background-blur = 5
 macos-titlebar-style = transparent
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
 font-size = 20
-font-family = JetBrainsMono Nerd Font Mono
+# font-family = JetBrainsMono Nerd Font Mono
+font-family = Paper Mono
 keybind = ctrl+d=unbind
 keybind = global:option+super+enter=new_window
 # background-opacity = 0

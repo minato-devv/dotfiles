@@ -2,6 +2,7 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
 
+setopt auto_cd
 setopt glob_dots
 setopt extended_history
 setopt share_history
@@ -72,13 +73,9 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 }
 zstyle ':vcs_info:git*+post-backend:*' hooks git-format-array
 
-# UPTIME="$(uptime | sed -E 's/^.*up ([^,]*).*/\1/')"
-# BATT="$(pmset -g batt | \grep -Eo '\d+%' | sed -E 's/%/%%/')"
-# DISK="$(df -h / | tail -1 | awk "{print \$4}" | head -1)"
-# MEM="$(vm_stat | awk "/Pages free/ {print \$3}" | sed -E 's/\.//')"
 export PROMPT='[%D{%d/%m/%y}] %n@%m %~${vcs_info_msg_0_} '
 source "$ZDOTDIR/.aliases"
-bindkey -e
+bindkey -v
 autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey '^e' edit-command-line
 for i in $ZDOTDIR/plugins/*(.N); do source $i; done
