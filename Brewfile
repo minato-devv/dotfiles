@@ -20,6 +20,8 @@ brew "grep"
 brew "python@3.14"
 # Client library for huggingface.co hub
 brew "hf"
+# Text-mode disk usage visualization utility
+brew "leaves"
 # Language Server for the Lua language
 brew "lua-language-server"
 # Apple Silicon Monitor Top written in Go Lang
@@ -34,10 +36,14 @@ brew "ninja"
 brew "node"
 # Command-line Git information tool
 brew "onefetch"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # Static type checker for Python
 brew "pyright"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Modernized, complete, self-contained TeX/LaTeX engine
+brew "tectonic"
 # macOS command-line tool to work with default apps
 brew "utiluti"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -45,8 +51,13 @@ brew "uv"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-paper-mono"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# AI agent for working with open models
+cask "lm-studio-bionic"
+# Run AI models locally
+cask "nativ"
 # Minecraft launcher
 cask "prismlauncher"
 # Virtual machines UI using QEMU
@@ -56,4 +67,4 @@ go "github.com/danielmiessler/fabric/cmd/fabric"
 go "github.com/gokcehan/lf"
 go "tailscale.com/cmd/tailscale"
 go "tailscale.com/cmd/tailscaled"
-npm "@earendil-works/pi-coding-agent"
+uv "browser-use"

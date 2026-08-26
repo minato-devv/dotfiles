@@ -1,3 +1,4 @@
+auto-update-channel = tip
 theme = Kibble
 # background-blur = 5
 macos-titlebar-style = transparent
