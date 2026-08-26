@@ -39,7 +39,6 @@ opt.clipboard = "unnamedplus"
 opt.confirm = true
 vim.g.netrw_banner = 0
 opt.mouse = ""
-vim.g.mapleader = ' '
 
 -- Normal mode mappings
 vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { desc = "Move line down" })
@@ -52,3 +51,10 @@ vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set({'n', 'v'}, 'c', '"_c')
 vim.keymap.set({'n', 'v'}, 's', '"_s')
 vim.keymap.set({'n', 'v'}, 'x', '"_x')
+
+vim.g.mapleader = " "
+vim.g.localleader = ","
+
+-- vim.pack.add { "https://github.com/lervag/vimtex", "https://github.com/neovim/nvim-lspconfig"}
+-- vim.g.vimtex_view_method = "general"
+-- vim.lsp.enable('pyright')

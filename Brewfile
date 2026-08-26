@@ -44,6 +44,8 @@ brew "pyright"
 brew "ripgrep"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
+# Implementation of the Language Server Protocol for LaTeX
+brew "texlab"
 # macOS command-line tool to work with default apps
 brew "utiluti"
 # Extremely fast Python package installer and resolver, written in Rust
