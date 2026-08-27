@@ -11,8 +11,8 @@ opt.cursorlineopt = "line"
 opt.statuscolumn = "%s %{v:lnum} %{v:relnum} "
 opt.termguicolors = false
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none' })
-vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 'none' })
-vim.api.nvim_set_hl(0, 'CursorColumn', { ctermbg = 'none' })
+vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 6 })
+vim.api.nvim_set_hl(0, 'CursorColumn', { ctermbg = 6 })
 vim.api.nvim_set_hl(0, 'SignColumn', { ctermbg = 'none' })
 opt.foldenable = true
 opt.foldmethod = 'expr'
@@ -24,7 +24,7 @@ opt.linebreak = true
 opt.wrap = true
 opt.splitright = true
 opt.list = true
-opt.listchars = { tab = "| ", trail = "·", }
+opt.listchars = { tab = "⇥ ", trail = "·", }
 opt.autoindent = true
 opt.smartindent = true
 opt.tabstop = 4
@@ -55,6 +55,48 @@ vim.keymap.set({'n', 'v'}, 'x', '"_x')
 vim.g.mapleader = " "
 vim.g.localleader = ","
 
--- vim.pack.add { "https://github.com/lervag/vimtex", "https://github.com/neovim/nvim-lspconfig"}
+-- vim.pack.add { "https://github.com/lervag/vimtex" }
 -- vim.g.vimtex_view_method = "general"
--- vim.lsp.enable('pyright')
+
+vim.pack.add { "https://github.com/neovim/nvim-lspconfig"}
+vim.diagnostic.config({
+  severity_sort = true,                -- errors above warnings above info
+  virtual_text = {
+    spacing = 2,
+    source = "if_many",                -- show the source name when more than one
+    prefix = "●",                      -- the marker in front of each message
+  },
+  float = {
+    border = "rounded",
+    source = "if_many",
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "E",
+      [vim.diagnostic.severity.WARN]  = "W",
+      [vim.diagnostic.severity.INFO]  = "I",
+      [vim.diagnostic.severity.HINT]  = "H",
+    },
+  },
+})
+vim.lsp.enable("pyright")
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local map = function(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+    end
+    map("n", "K",     vim.lsp.buf.hover,        "Hover")
+    map("n", "gd",    vim.lsp.buf.definition,   "Go to definition")
+    map("n", "gD",    vim.lsp.buf.declaration,  "Go to declaration")
+    map("n", "gi",    vim.lsp.buf.implementation,"Go to implementation")
+    map("n", "gr",    vim.lsp.buf.references,   "Find references")
+    map("n", "<leader>rn", vim.lsp.buf.rename,  "Rename symbol")
+    map({ "n", "v" }, "<leader>ca", function()
+      vim.lsp.buf.code_action()
+    end, "Code action")
+    map("n", "<leader>f", function()
+      vim.lsp.buf.format({ async = true })
+    end, "Format buffer")
+  end,
+})

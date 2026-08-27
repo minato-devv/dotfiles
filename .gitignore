@@ -4,3 +4,4 @@ nvim/nvim-pack-lock.json
 .gitconfig_private
 mactop/config.json
 zsh/.zcompdump
+zsh/.zsh_sessions/
