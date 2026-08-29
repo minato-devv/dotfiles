@@ -158,4 +158,11 @@ done
 alias gcaf='git commit --all -F - <<EOF'
 alias sed='sed -E'
 alias cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'"
-alias energy-impact='sudo powermetrics -n 1 --samplers tasks --show-process-energy'
+alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50'
+alias pds='pmset displaysleepnow'
+alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+
+func mdql() {
+	pandoc "$1" -o /tmp/"$2" --pdf-engine=tectonic && qlmanage -p /tmp/"$2"
+}
+alias ql='qlmanage -p'

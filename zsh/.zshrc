@@ -69,11 +69,12 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 	untracked_count="$(git status --porcelain | /usr/bin/grep -c '??')"
 	[[ $untracked_count -gt 0 ]] && git_items+=("?${untracked_count}")
 
-	hook_com[misc]="[${(j: :)git_items}]"
+	hook_com[misc]="⎇ ${(j: :)git_items}"
 }
 zstyle ':vcs_info:git*+post-backend:*' hooks git-format-array
 
-export PROMPT='[%D{%d/%m/%y}] %n@%m %~${vcs_info_msg_0_} '
+export PROMPT='%n@%m %B%~%b${vcs_info_msg_0_}'$'\n''%(?.➤ .✗➤ )'
+export RPROMPT='%*'
 source "$ZDOTDIR/.aliases"
 bindkey -v
 autoload -Uz edit-command-line && zle -N edit-command-line

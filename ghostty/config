@@ -4,7 +4,7 @@ theme = Kibble
 macos-titlebar-style = transparent
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
-font-size = 20
+font-size = 22
 # font-family = JetBrainsMono Nerd Font Mono
 font-family = Paper Mono
 keybind = ctrl+d=unbind
