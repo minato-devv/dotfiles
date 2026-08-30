@@ -6,7 +6,7 @@ unfocused-split-opacity = 1
 mouse-hide-while-typing = true
 font-size = 22
 # font-family = JetBrainsMono Nerd Font Mono
-font-family = Paper Mono
+font-family = Iosevka Curly Slab
 keybind = ctrl+d=unbind
 keybind = global:option+super+enter=new_window
 # background-opacity = 0

@@ -37,7 +37,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
 # zstyle ':completion:*' list-dirs-first true
 
-autoload -Uz fetch_temps
+# autoload -Uz fetch_temps
 # export PERIOD=10
 # prompt_temps() { fetch_temps all; }
 # add-zsh-hook periodic prompt_temps
@@ -73,8 +73,30 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 }
 zstyle ':vcs_info:git*+post-backend:*' hooks git-format-array
 
-export PROMPT='%n@%m %B%~%b${vcs_info_msg_0_}'$'\n''%(?.➤ .✗➤ )'
-export RPROMPT='%*'
+typeset -g _prompt_full=$'%F{11}%n@%m%f %F{6}%B%~%b%f%F{7}${vcs_info_msg_0_}%f\n%(?.%F{12}❯%f .%F{9}❯%f )'
+typeset -g _transient_prompt='%(?.%F{12}❯%f .%F{9}❯%f )'
+typeset -g _rprompt='%*'
+_collapse_prompt() {
+	[[ "$PROMPT" == "$_transient_prompt" ]] && return
+	[[ -o zle ]] || return
+	PROMPT="$_transient_prompt"
+	RPROMPT=""
+	zle reset-prompt
+	zle -R
+}
+_restore_prompt() {
+	PROMPT="$_prompt_full"
+	RPROMPT="$_rprompt"
+}
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget line-finish _collapse_prompt
+add-zsh-hook precmd _restore_prompt
+TRAPINT() {
+	[[ -o interactive ]] && _collapse_prompt
+	return $((128 + $1))
+}
+PROMPT="$_prompt_full"
+
 source "$ZDOTDIR/.aliases"
 bindkey -v
 autoload -Uz edit-command-line && zle -N edit-command-line
