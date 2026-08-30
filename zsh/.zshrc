@@ -98,7 +98,7 @@ TRAPINT() {
 PROMPT="$_prompt_full"
 
 source "$ZDOTDIR/.aliases"
-bindkey -v
+bindkey -e
 autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey '^e' edit-command-line
 for i in $ZDOTDIR/plugins/*(.N); do source $i; done
