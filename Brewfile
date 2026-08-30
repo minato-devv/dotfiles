@@ -4,10 +4,14 @@ brew "bat"
 brew "fastfetch"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # GNU grep, egrep and fgrep

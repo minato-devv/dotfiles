@@ -1,51 +1,26 @@
+# System
 alias ls='ls -A'
 alias l='du -sh .* * | sort -h'
 
-alias grep='ggrep -P'
 alias cat='bat'
 alias vim='nvim'
+alias grep='ggrep -P'
+alias sed='gsed -E'
+alias find='gfind -regextype posix-extended'
+alias awk='gawk'
 
+alias ql='qlmanage -p'
 alias ff='fastfetch'
-alias fd='fd -H'
-
-alias -g lctl='launchctl'
-
-user-services() {
-    launchctl print gui/$(id -u) | grep -v com.apple
-}
-
-system-services() {
-    sudo launchctl print system | grep -v com.apple
-}
-
-enable-user-service() {
-    if [ -z "$1" ]; then
-        echo "Usage: enable-user-service <service-target>"
-        return 1
-    fi
-    launchctl enable gui/$(id -u)/$1
-}
-
-bootstrap-user-service() {
-    if [ -z "$1" ]; then
-        echo "Usage: bootstrap-user-service <plist-filename>"
-        return 1
-    fi
-    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/$1
-}
-
-alias show-dns-servers='networksetup -getdnsservers 'Wi-Fi''
-alias show-search-domains='networksetup -getsearchdomains 'Wi-Fi''
-
-alias com='fabric -p create_git_diff_commit'
+alias cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'"
+alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50'
+alias pds='pmset displaysleepnow'
+alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
 alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
 
 alias path='print -l $path'
 alias fpath='print -l $fpath'
-
-alias ts='tailscale'
 
 copypath() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
@@ -64,13 +39,6 @@ backupdir() {
 
 mkcd() {
 	mkdir -p "$1" && cd "$1"
-}
-
-make_alias() {
-	local alias=$1
-	local cmd=$2
-	echo "alias $alias='$cmd'" >> $ZDOTDIR/.aliases
-	source $ZDOTDIR/.aliases
 }
 
 z() {
@@ -102,67 +70,11 @@ alias dot='cd $HOME/Dev/dotfiles'
 alias repo='cd $HOME/Dev'
 alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
 
-alias lastmod='find . \( -type f -exec ls -lrt {} + \) -o -name '.git' -prune'
-alias cleardir='find . -not \( -name . -o -name .. \) -exec rm -rf {} +'
-alias findemails="ggrep -IP '[a-zA-Z0-9._+%-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}'"
-alias redactemail="sed -Ei '' 's/[a-zA-Z0-9._+%-]+(@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})/[REDACTED]\1/g'"
-alias findphonenumbers="ggrep -sIP '(?<!\d)(?:\+\d{1,3}[- ]?)?(?:\([2-9](?!11)\d{2}\) ?[2-9]\d{2}[- ]?\d{4}|[2-9]\d{2}([- ]?)[2-9]\d{2}\1\d{4})(?!\d)'"
-alias findphonenumbers_strict="ggrep -sIP '(?<!\d)(?:\+\d{1,3} )?(?:\([2-9](?!11)\d{2}\) ?[2-9]\d{2}[- ]?\d{4}|[2-9]\d{2}([- ])[2-9]\d{2}\1\d{4})(?!\d)'"
-
-find_sensitive_info() {
-	local emails="$(findemails -nH -R .)"
-	local phones="$(findphonenumbers_strict -nH -R .)"
-
-	read "ne?Choose number of lines in emails: "
-	read "np?Choose number of lines in phone numbers: "
-
-	if (( ne > 0 && np > 0 )); then
-		echo "\n============ Identified emails ============"
-		echo "$emails" | head -n $ne
-		echo "==========================================="
-		echo "\n======== Identified phone numbers ========="
-		echo "$phones" | head -n $np
-		echo "==========================================="
-		echo "\nDone..."
-		return 0
-	else
-		echo "Values of 0 are not allowed.\nExiting..."
-		return 1
-	fi
-}
-
-alias giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
+alias giturl="git config --get remote.origin.url | gsed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
 alias gitrem='open $(giturl)'
 
 list_repos() {
-	find $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
+	gfind $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
 }
 
-container_ls() {for a in '' 'i' 'n' 'v' 'm'; do container $a ls; done}
-
-colors() {
-	for i in {0..7}; do
-		for offset in 0 8; do
-			idx=$((i + offset))
-			stty -echo
-			printf "\e]4;$idx;?\a"
-			read -d $'\a' hex
-			stty echo
-			hex=$(echo "$hex" | sed -n 's/.*rgb:\(..\)[0-9a-fA-F]*\/\(..\)[0-9a-fA-F]*\/\(..\)[0-9a-fA-F]*.*/#\1\2\3/p')
-
-			printf "\e[48;5;${idx}m  \e[0m \e[1m%2d\e[0m: %s   " "$idx" "$hex"
-		done
-		echo
-done
-}
 alias gcaf='git commit --all -F - <<EOF'
-alias sed='sed -E'
-alias cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'"
-alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50'
-alias pds='pmset displaysleepnow'
-alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
-
-func mdql() {
-	pandoc "$1" -o /tmp/"$2" --pdf-engine=tectonic && qlmanage -p /tmp/"$2"
-}
-alias ql='qlmanage -p'
