@@ -1,6 +1,6 @@
 {
-  "default_layout": "compact",
-  "theme": "silver",
+  "default_layout": "gauges_only",
+  "theme": "mint",
   "sort_column": 4,
   "sort_reverse": false
 }

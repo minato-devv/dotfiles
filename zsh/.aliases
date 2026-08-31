@@ -83,8 +83,8 @@ alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
 alias giturl="git config --get remote.origin.url | gsed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
 alias gitrem='open $(giturl)'
 
-list_repos() {
-	gfind $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
-}
+# list_repos() {
+# 	gfind $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
+# }
 
 alias gcaf='git commit --all -F - <<EOF'
