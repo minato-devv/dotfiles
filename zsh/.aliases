@@ -1,12 +1,11 @@
-# System
 alias ls='ls -A'
+alias ll='ls -Al'
 alias l='du -sh .* * | sort -h'
 
 alias cat='bat'
 alias vim='nvim'
 alias grep='ggrep -P'
 alias sed='gsed -E'
-# alias find='gfind -regextype posix-extended'
 alias awk='gawk'
 
 alias ql='qlmanage -p'
@@ -16,21 +15,23 @@ alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process
 alias pds='pmset displaysleepnow'
 alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 
+alias bugcp='brew update; brew upgrade --greedy; brew cleanup --prune=all'
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
 alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
 
 alias path='print -l $path'
 alias fpath='print -l $fpath'
 
-find() {
-    if [ "$#" -eq 0 ]; then
-        command gfind . -regextype posix-extended
-    elif [[ "$1" == -* ]]; then
-        command gfind . -regextype posix-extended "$@"
-    else
-        command gfind "$@" -regextype posix-extended
-    fi
-}
+# alias find='gfind -regextype posix-extended'
+# find() {
+#     if [ "$#" -eq 0 ]; then
+#         command gfind . -regextype posix-extended
+#     elif [[ "$1" == -* ]]; then
+#         command gfind . -regextype posix-extended "$@"
+#     else
+#         command gfind "$@" -regextype posix-extended
+#     fi
+# }
 
 copypath() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
@@ -83,8 +84,8 @@ alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
 alias giturl="git config --get remote.origin.url | gsed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
 alias gitrem='open $(giturl)'
 
-# list_repos() {
-# 	gfind $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
-# }
+list_repos() {
+	gfind $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
+}
 
 alias gcaf='git commit --all -F - <<EOF'
