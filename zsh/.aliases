@@ -1,12 +1,10 @@
 alias ls='ls -A'
 alias ll='ls -Al'
-alias l='du -sh .* * | sort -h'
+alias s='du -sh .* * | sort -h'
 
 alias cat='bat'
 alias vim='nvim'
-alias grep='ggrep -P'
-alias sed='gsed -E'
-alias awk='gawk'
+alias grep='grep -hIE'
 
 alias ql='qlmanage -p'
 alias ff='fastfetch'
@@ -21,17 +19,6 @@ alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
 
 alias path='print -l $path'
 alias fpath='print -l $fpath'
-
-# alias find='gfind -regextype posix-extended'
-# find() {
-#     if [ "$#" -eq 0 ]; then
-#         command gfind . -regextype posix-extended
-#     elif [[ "$1" == -* ]]; then
-#         command gfind . -regextype posix-extended "$@"
-#     else
-#         command gfind "$@" -regextype posix-extended
-#     fi
-# }
 
 copypath() { 
 	realpath "$1" | tr -d '\n' | pbcopy 
@@ -77,15 +64,13 @@ z() {
 		*) echo "Unknown action: $2" ;;
 	esac
 }
-alias dot='cd $HOME/Dev/dotfiles'
-alias repo='cd $HOME/Dev'
 alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
 
-alias giturl="git config --get remote.origin.url | gsed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
+alias giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
 alias gitrem='open $(giturl)'
 
 list_repos() {
-	gfind $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec ggrep -hoP '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
+	find $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec grep -EIoh '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
 }
 
 alias gcaf='git commit --all -F - <<EOF'
