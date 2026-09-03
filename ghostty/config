@@ -1,13 +1,15 @@
 auto-update-channel = tip
-theme = pro
-# background-blur = 5
+
 macos-titlebar-style = transparent
 unfocused-split-opacity = 1
 mouse-hide-while-typing = true
 font-size = 22
 # font-family = JetBrainsMono Nerd Font Mono
 font-family = Iosevka Curly Slab
+# theme = pro
+# background-blur = 5
+# background-opacity = 30
+# background-opacity-cells = true
+
 keybind = ctrl+d=unbind
 keybind = global:option+super+enter=new_window
-# background-opacity = 0
-# background-opacity-cells = true
