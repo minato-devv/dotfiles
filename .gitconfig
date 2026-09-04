@@ -23,6 +23,8 @@
 	path = .gitconfig_private
 [pager]
 	diff = false
+
+; git help --config | rg "^advice\." | xargs -I {} git config --global {} false
 [advice]
 	addEmbeddedRepo = false
 	addEmptyPathspec = false
