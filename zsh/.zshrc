@@ -37,11 +37,6 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
 # zstyle ':completion:*' list-dirs-first true
 
-# autoload -Uz fetch_temps
-# export PERIOD=10
-# prompt_temps() { fetch_temps all; }
-# add-zsh-hook periodic prompt_temps
-
 autoload -Uz vcs_info 
 add-zsh-hook precmd vcs_info
 
