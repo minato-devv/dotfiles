@@ -7,7 +7,7 @@ alias vim='nvim'
 alias grep='grep -hIE'
 
 alias ql='qlmanage -p'
-alias ff='fastfetch'
+#alias ff='fastfetch'
 alias cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'"
 alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50'
 alias pds='pmset displaysleepnow'
