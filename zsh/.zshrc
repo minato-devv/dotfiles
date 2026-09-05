@@ -98,4 +98,5 @@ source "$ZDOTDIR/.aliases"
 bindkey -e
 autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey '^e' edit-command-line
+bindkey '^ ' _expand_alias
 for i in $ZDOTDIR/plugins/*(.N); do source $i; done

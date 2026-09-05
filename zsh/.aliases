@@ -1,4 +1,4 @@
-alias bckp-dotfiles='rsync -avP --delete "$HOME/Dev/dotfiles/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/dotfiles-backup/"'
+alias bckp-dotfiles='rsync -avP --delete --exclude ".git/" --exclude ".DS_Store" "$HOME/Dev/dotfiles/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/dotfiles-bckp/"'
 alias ls='ls -A'
 alias ll='ls -Al'
 alias s='du -sh .* * | sort -h'
