@@ -1,6 +1,7 @@
 {
-  "default_layout": "gauges_only",
-  "theme": "mint",
+  "default_layout": "dashboard",
+  "theme": "amber",
+  "background": "deep-space",
   "sort_column": 4,
   "sort_reverse": false
 }
