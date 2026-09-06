@@ -8,7 +8,7 @@ opt.cursorcolumn = true
 opt.cursorlineopt = "line"
 -- opt.number = true
 -- opt.relativenumber = true
-opt.statuscolumn = "%{v:lnum} %{v:relnum} "
+opt.statuscolumn = " %{v:lnum} %{v:relnum} "
 opt.termguicolors = false
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none' })
 vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 6 })
