@@ -68,6 +68,9 @@ list_repos() {
 }
 
 alias gcaf='git commit --all -F - <<EOF'
+alias gdrs='gd --stat @{u}..HEAD'
+alias gdr='gd @{u}..HEAD'
+alias glr='git log @{u}..HEAD'
 
 mvers() {
 	sw_vers | awk '/ProductVersion:/{v=$2}/BuildVersion:/{b=$2}END{print "macOS "v" ("b")"}'
