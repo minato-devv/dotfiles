@@ -2,13 +2,15 @@ auto-update-channel = tip
 
 link-previews = false
 
-theme = IC Orange PPL
+# theme = IC Orange PPL
+# theme = Jubi
+theme = Matte Black
 background-blur = macos-glass-clear
 background-opacity = 0.7
 background-opacity-cells = true
 
 macos-window-shadow = false
-macos-window-buttons = hidden
+# macos-window-buttons = hidden
 macos-titlebar-proxy-icon = hidden
 confirm-close-surface = false
 split-preserve-zoom = navigation
@@ -18,7 +20,7 @@ title = " "
 # right-click-action = copy
 mouse-hide-while-typing = false
 cursor-style = bar
-scroll-to-bottom = output, no-keystroke
+scroll-to-bottom = output, keystroke
 # selection-clear-on-typing = false
 selection-clear-on-copy = true
 window-inherit-working-directory = true

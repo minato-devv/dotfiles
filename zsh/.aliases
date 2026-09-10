@@ -5,6 +5,8 @@ alias s='du -sh .* * | sort -h'
 alias cat='bat'
 alias vim='nvim'
 alias grep='grep -hIE'
+alias which='which -a'
+alias qpath='print -l $path | xargs -I {} ls -1 {} 2>/dev/null | grep -hIE'
 
 alias ql='qlmanage -p'
 alias top='top -s 10 -n 15 -o mem -stats command,cpu,mem,state,time,pid'
@@ -70,3 +72,5 @@ alias gcaf='git commit --all -F - <<EOF'
 mvers() {
 	sw_vers | awk '/ProductVersion:/{v=$2}/BuildVersion:/{b=$2}END{print "macOS "v" ("b")"}'
 }
+
+alias mcma='make clean && make all'
