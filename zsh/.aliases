@@ -68,9 +68,27 @@ list_repos() {
 }
 
 alias gcaf='git commit --all -F - <<EOF'
-alias gdrs='gd --stat @{u}..HEAD'
+alias gdsr='gd --stat @{u}..HEAD'
 alias gdr='gd @{u}..HEAD'
 alias glr='git log @{u}..HEAD'
+
+# (replace oh-my-zsh git plugin)
+alias gst='git status'
+alias gp='git push'
+alias gd='git diff'
+alias gdst='git diff --staged'
+alias gds='git diff --stat'
+alias gss='git status --short'
+alias gc='git commit --verbose'
+alias gcam='git commit --all --message'
+alias gcl='git clone'
+alias gdc='git diff --cached'
+alias glo='git log --oneline --decorate'
+alias gpr='git pull --rebase'
+alias grs='git restore --staged'
+alias glx='git log --oneline -G'
+alias gs='git show'
+alias gaa='git add --all'
 
 mvers() {
 	sw_vers | awk '/ProductVersion:/{v=$2}/BuildVersion:/{b=$2}END{print "macOS "v" ("b")"}'
