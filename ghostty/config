@@ -4,10 +4,10 @@ link-previews = false
 
 # theme = IC Orange PPL
 # theme = Jubi
-theme = Matte Black
+# theme = Matte Black
 background-blur = macos-glass-clear
-background-opacity = 0.7
-background-opacity-cells = true
+# background-opacity = 0.7
+# background-opacity-cells = true
 
 macos-window-shadow = false
 # macos-window-buttons = hidden
