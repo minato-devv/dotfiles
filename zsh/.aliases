@@ -95,6 +95,7 @@ mvers() {
 }
 
 alias mcma='make clean && make all'
-alias nosleep='caffeinate -im &'
-alias nosyssleep='caffeinate -s &'
+
+alias nosleep='caffeinate -s &'
 alias allowsleep='killall caffeinate'
+alias c='clear'

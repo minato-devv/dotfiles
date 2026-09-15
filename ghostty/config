@@ -3,11 +3,11 @@ auto-update-channel = tip
 link-previews = false
 
 # theme = IC Orange PPL
-# theme = Jubi
+theme = Jubi
 # theme = Matte Black
 background-blur = macos-glass-clear
-# background-opacity = 0.7
-# background-opacity-cells = true
+background-opacity = 0.7
+background-opacity-cells = true
 
 macos-window-shadow = false
 # macos-window-buttons = hidden
@@ -29,16 +29,11 @@ split-inherit-working-directory = true
 window-inherit-font-size = true
 resize-overlay = never
 
-font-size = 20
-font-family = 0xproto
-# font-family = JetBrainsMono Nerd Font Mono
-# font-family = Iosevka Curly Slab
-# font-family = maple mono
-# font-family = Clarity City
+font-size = 25
 
-quick-terminal-position = center
-quick-terminal-size = 50%,50%
-keybind = global:option+backquote=toggle_quick_terminal
+# quick-terminal-position = center
+# quick-terminal-size = 50%,50%
+# keybind = global:option+backquote=toggle_quick_terminal
 macos-shortcuts = ask
 # keybind = ctrl+d=unbind
-keybind = global:option+enter=new_window
+# keybind = global:option+enter=new_window

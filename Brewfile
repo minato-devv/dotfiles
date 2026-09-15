@@ -26,11 +26,8 @@ brew "ripgrep"
 brew "tectonic"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
-cask "font-0xproto"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Minecraft launcher
-cask "prismlauncher"
 # Virtual machines UI using QEMU
 cask "utm"
 npm "corepack"
