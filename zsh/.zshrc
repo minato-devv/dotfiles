@@ -37,8 +37,8 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
 # zstyle ':completion:*' list-dirs-first true
 
-# typeset -g _prompt_full=$'%n@%m %B%~%b\n❯ '
-typeset -g _prompt_full=$'%n@%m %B%~%b${vcs_info_msg_0_}\n❯ '
+typeset -g _prompt_full=$'%n@%m %B%~%b\n❯ '
+# typeset -g _prompt_full=$'%n@%m %B%~%b${vcs_info_msg_0_}\n❯ '
 typeset -g _transient_prompt='❯ '
 # typeset -g _prompt_full=$'%F{13}%n@%m%f %F{6}%B%~%b%f%F{14}${vcs_info_msg_0_}%f\n%(?.%F{12}❯%f .%F{9}❯%f )'
 # typeset -g _transient_prompt='%(?.%F{12}❯%f .%F{9}❯%f )'
