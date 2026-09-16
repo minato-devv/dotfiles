@@ -99,3 +99,14 @@ alias mcma='make clean && make all'
 alias nosleep='caffeinate -s &'
 alias allowsleep='killall caffeinate'
 alias c='clear'
+
+releases-rss() {
+	curl -s https://developer.apple.com/news/releases/rss/releases.rss | \
+  grep -E '(title|pubDate)' | \
+  sed -e 's/^[ \t]*//' \
+      -e 's/<title>//g' -e 's/<\/title>//g' \
+      -e 's/<pubDate>//g' -e 's/<\/pubDate>//g' | \
+  tail -n +3 | \
+  paste - - | \
+  awk -F'\t' '{printf "\033[1;32m%s\033[0m\n  %s\n\n", $1, $2}'
+}
