@@ -70,27 +70,32 @@ list_repos() {
 	find $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec grep -EIoh '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
 }
 
-alias gcaf='git commit --all -F - <<EOF'
+alias gd='git diff HEAD'
 alias gdsr='gd --stat @{u}..HEAD'
 alias gdr='gd @{u}..HEAD'
-alias glr='git log @{u}..HEAD'
-alias gd='git diff'
-alias gdst='git diff --staged'
 alias gds='git diff --stat'
-alias gss='git status --short'
+alias gdst='git diff --staged'
+alias gdu='gd -U0'
+
+alias glr='git log @{u}..HEAD'
+alias glx='git log --oneline -G'
+
 alias gst='git status'
+alias gss='git status --short'
+alias gsvv='git status -vv'
+
 alias gp='git push'
+
 alias gc='git commit --verbose'
 alias gcam='git commit --all --message'
+alias gcaf='git commit --all -F - <<EOF'
+
 alias gcl='git clone'
-alias gdc='git diff --cached'
 alias glo='git log --oneline --decorate'
 alias gpr='git pull --rebase'
 alias grs='git restore --staged'
-alias glx='git log --oneline -G'
 alias gs='git show'
 alias gaa='git add --all'
-alias gdu='git diff -U0'
 
 mvers() {
 	sw_vers | awk '/ProductVersion:/{v=$2}/BuildVersion:/{b=$2}END{print "macOS "v" ("b")"}'
@@ -112,6 +117,6 @@ releases-rss() {
   awk -F'\t' '{printf "\033[1;32m%s\033[0m\n  %s\n\n", $1, $2}'
 }
 
-afm-commit() {
-	fm respond -m system "Write a git commit message based on the following git diff. Output only the commit message and be specific, citing specific terms: $(git diff -U0)"
+fmc() {
+	fm respond -m system "Write a git commit message based on the following git diff. Output only the commit message and be specific, citing specific terms: $(git diff $@)"
 }
