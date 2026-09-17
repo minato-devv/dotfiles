@@ -26,6 +26,8 @@ brew "ripgrep"
 brew "tectonic"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Voice and text chat software
+cask "discord"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Virtual machines UI using QEMU
