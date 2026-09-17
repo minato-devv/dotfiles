@@ -39,11 +39,12 @@ zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
 bindkey -e
 autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey '^X^E' edit-command-line
-#
+
 # for i in $ZDOTDIR/plugins/*(.N); do source $i; done
+for i in $ZDOTDIR/plugins/*(.N); do autoload -Uz $i; done
 
 source "$ZDOTDIR/zshrc/.aliases"
 # source "$ZDOTDIR/zshrc/.vcs_info"
 # source "$ZDOTDIR/zshrc/.transient_prompt"
-export PROMPT="%# "
 # source "$ZDOTDIR/zshrc/.bindkey"
+export PROMPT="%# "
