@@ -1,30 +1,17 @@
 [user]
-	name = minato-devv
-[alias]
-	lg = log --oneline --graph --decorate --all
-	a = add
-	s = status
-	sw = switch
-	b = branch
-	cl = clone
-	c = commit -m
-	p = push
-	pl = pull
+	name = minato-devv-local
 [core]
 	editor = nvim
-	excludesFile = ~/.gitignore_global
 [init]
 	defaultBranch = main
 [pull]
 	rebase = true
 [fetch]
 	prune = true
-[include]
-	path = .gitconfig_private
-[pager]
-	diff = false
+;[pager]
+;	diff = false
 
-; git help --config | rg "^advice\." | xargs -I {} git config --global {} false
+;git help --config | rg "^advice\." | xargs -I {} git config --global {} false
 [advice]
 	addEmbeddedRepo = false
 	addEmptyPathspec = false
