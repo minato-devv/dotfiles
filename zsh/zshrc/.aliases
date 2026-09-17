@@ -2,7 +2,7 @@ alias ls='ls -A'
 alias ll='ls -Al'
 alias s='du -sh .* * | sort -h'
 
-alias cat='bat'
+#alias cat='bat'
 alias vim='nvim'
 alias grep='grep -hIE'
 alias which='which -a'
@@ -35,7 +35,7 @@ mkcd() {
 
 z() {
 	if [[ "$1" == "reset" || "$1" == "r" ]]; then
-		echo "Reloading shell..."
+		#echo "Reloading shell..."
 		exec zsh -il
 	fi
 
@@ -44,11 +44,14 @@ z() {
         i|rc)  file="$ZDOTDIR/.zshrc" ;;
         v|env) file="$HOME/.zshenv" ;;
         p|pro) file="$ZDOTDIR/.zprofile" ;;
-        a|alias) file="$ZDOTDIR/.aliases" ;;
-		b|bindkey) file="$ZDOTDIR/.bindkey" ;;
+        a|alias) file="$ZDOTDIR/zshrc/.aliases" ;;
+		b|bindkey) file="$ZDOTDIR/zshrc/.bindkey" ;;
+		f) file="$ZDOTDIR/zshrc/.vcs_info" ;;
+		t) file="$ZDOTDIR/zshrc/.transient_prompt" ;;
 		g|ghost) file="$XDG_CONFIG_HOME/ghostty/config" ;;
-        *) echo "Usage: z [i/rc | v/env p/profile a/alias | b/bindkey | g/ghost] [s/source | e/edit| c/cat | b/bat] (Default: edit)"; return 1 ;;
+        *) echo "Moof!"; return 1 ;;
     esac
+#Usage: z [i/rc | v/env p/profile a/alias | b/bindkey | g/ghost] [s/source | e/edit| c/cat | b/bat] (Default: edit)
 
 	case "$2" in
 		s|source) source "$file" && echo "Sourced $file" ;;
@@ -71,14 +74,12 @@ alias gcaf='git commit --all -F - <<EOF'
 alias gdsr='gd --stat @{u}..HEAD'
 alias gdr='gd @{u}..HEAD'
 alias glr='git log @{u}..HEAD'
-
-# (replace oh-my-zsh git plugin)
-alias gst='git status'
-alias gp='git push'
 alias gd='git diff'
 alias gdst='git diff --staged'
 alias gds='git diff --stat'
 alias gss='git status --short'
+alias gst='git status'
+alias gp='git push'
 alias gc='git commit --verbose'
 alias gcam='git commit --all --message'
 alias gcl='git clone'
@@ -98,7 +99,6 @@ alias mcma='make clean && make all'
 
 alias nosleep='caffeinate -s &'
 alias allowsleep='killall caffeinate'
-alias c='clear'
 
 releases-rss() {
 	curl -s https://developer.apple.com/news/releases/rss/releases.rss | \

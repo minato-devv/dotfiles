@@ -1,0 +1,26 @@
+typeset -g _prompt_full=$'%n@%m %B%~%b\n%# '
+# typeset -g _prompt_full=$'%n@%m %B%~%b${vcs_info_msg_0_}\n❯ '
+typeset -g _transient_prompt='%# '
+# typeset -g _prompt_full=$'%F{13}%n@%m%f %F{6}%B%~%b%f%F{14}${vcs_info_msg_0_}%f\n%(?.%F{12}❯%f .%F{9}❯%f )'
+# typeset -g _transient_prompt='%(?.%F{12}❯%f .%F{9}❯%f )'
+typeset -g _rprompt='%*'
+_collapse_prompt() {
+	[[ "$PROMPT" == "$_transient_prompt" ]] && return
+	[[ -o zle ]] || return
+	PROMPT="$_transient_prompt"
+	RPROMPT=""
+	zle reset-prompt
+	zle -R
+}
+_restore_prompt() {
+	PROMPT="$_prompt_full"
+	RPROMPT="$_rprompt"
+}
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget line-finish _collapse_prompt
+add-zsh-hook precmd _restore_prompt
+TRAPINT() {
+	[[ -o interactive ]] && _collapse_prompt
+	return $((128 + $1))
+}
+PROMPT="$_prompt_full"
