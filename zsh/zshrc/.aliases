@@ -16,6 +16,9 @@ alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process
 alias pds='pmset displaysleepnow'
 alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 alias bckp-dotfiles='rsync -avP --delete --exclude ".git/" --exclude ".DS_Store" "$HOME/Dev/dotfiles/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/dotfiles-bckp/"'
+bckp-studies() {
+	rsync -avP --delete --exclude '.Spotlight-*' --exclude '.Trashes' --exclude '.fseventsd' "/Volumes/Studies/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Academics/"
+}
 
 alias bugcp='brew update; brew upgrade --greedy; brew cleanup --prune=all'
 alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
