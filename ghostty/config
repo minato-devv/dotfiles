@@ -1,27 +1,22 @@
-auto-update-channel = tip
-
-link-previews = false
-
-# theme = IC Orange PPL
-theme = Jubi
-# theme = Matte Black
+theme = Carbonfox
+font-size = 25
 background-blur = macos-glass-clear
-background-opacity = 0.7
-background-opacity-cells = true
+# background-opacity = 0.7
+# background-opacity-cells = true
+
+auto-update-channel = tip
+link-previews = false
+macos-shortcuts = ask
 
 macos-window-shadow = false
-# macos-window-buttons = hidden
 macos-titlebar-proxy-icon = hidden
 confirm-close-surface = false
 split-preserve-zoom = navigation
-# unfocused-split-opacity = 1
 title = " "
 
-# right-click-action = copy
 mouse-hide-while-typing = false
 cursor-style = bar
 scroll-to-bottom = output, keystroke
-# selection-clear-on-typing = false
 selection-clear-on-copy = true
 window-inherit-working-directory = true
 tab-inherit-working-directory = true
@@ -29,11 +24,12 @@ split-inherit-working-directory = true
 window-inherit-font-size = true
 resize-overlay = never
 
-font-size = 25
-
 # quick-terminal-position = center
 # quick-terminal-size = 50%,50%
 # keybind = global:option+backquote=toggle_quick_terminal
-macos-shortcuts = ask
 # keybind = ctrl+d=unbind
+# macos-window-buttons = hidden
 # keybind = global:option+enter=new_window
+# unfocused-split-opacity = 1
+# right-click-action = copy
+# selection-clear-on-typing = false

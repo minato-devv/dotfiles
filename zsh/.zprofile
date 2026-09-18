@@ -1,6 +1,6 @@
 typeset -U path fpath
 
-path=("${HOME}/llama.cpp/build/bin" $path)
+path=("${HOME}/mlx_lm_venv/bin" $path)
 path=("$GOBIN" $path)
 path=("$HOME/.local/bin" $path)
 path=("/opt/homebrew/bin" $path)
