@@ -1,4 +1,4 @@
-alias ls='ls -A'
+alias ls='ls -Al'
 alias ll='ls -Al'
 alias s='du -sh .* * | sort -h'
 
@@ -37,30 +37,24 @@ mkcd() {
 }
 
 z() {
-	if [[ "$1" == "reset" || "$1" == "r" ]]; then
-		#echo "Reloading shell..."
-		exec zsh -il
-	fi
-
     local file
     case "$1" in
-        i|rc)  file="$ZDOTDIR/.zshrc" ;;
-        v|env) file="$HOME/.zshenv" ;;
-        p|pro) file="$ZDOTDIR/.zprofile" ;;
-        a|alias) file="$ZDOTDIR/zshrc/.aliases" ;;
-		b|bindkey) file="$ZDOTDIR/zshrc/.bindkey" ;;
-		f) file="$ZDOTDIR/zshrc/.vcs_info" ;;
-		t) file="$ZDOTDIR/zshrc/.transient_prompt" ;;
-		g|ghost) file="$XDG_CONFIG_HOME/ghostty/config" ;;
-        *) echo "Moof!"; return 1 ;;
+		r) exec zsh -li ;;
+        i) file="$ZDOTDIR/.zshrc" ;;
+        v) file="$HOME/.zshenv" ;;
+        p) file="$ZDOTDIR/.zprofile" ;;
+        a) file="$ZDOTDIR/conf.d/.aliases" ;;
+		b) file="$ZDOTDIR/conf.d/.bindkey" ;;
+		f) file="$ZDOTDIR/conf.d/.vcs_info" ;;
+		t) file="$ZDOTDIR/conf.d/.transient_prompt" ;;
+		g) file="$XDG_CONFIG_HOME/ghostty/config" ;;
+        *) return 1 ;;
     esac
-#Usage: z [i/rc | v/env p/profile a/alias | b/bindkey | g/ghost] [s/source | e/edit| c/cat | b/bat] (Default: edit)
-
 	case "$2" in
-		s|source) source "$file" && echo "Sourced $file" ;;
-		e|edit|"") "${EDITOR:-nvim}" "$file" && echo "Edited $file" ;;
-		c|cat) \cat "$file" ;;
-		b|bat) bat "$file" ;;
+		s) source "$file" && echo "Sourced $file" ;;
+		e|"") "${EDITOR:-nvim}" "$file" && echo "Edited $file" ;;
+		c) cat "$file" ;;
+		b) bat "$file" ;;
 		*) echo "Unknown action: $2" ;;
 	esac
 }
@@ -88,6 +82,7 @@ alias gss='git status --short'
 alias gsvv='git status -vv'
 
 alias gp='git push'
+alias gpuom='git push -u origin main'
 
 alias gc='git commit --verbose'
 alias gcam='git commit --all --message'

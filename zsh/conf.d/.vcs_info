@@ -26,7 +26,7 @@ zstyle ':vcs_info:*' actionformats ' %m (%a)'
 	[[ "${staged_count}" -gt 0 ]] && git_items+=("+${staged_count}")
 	[[ "${unstaged_count}" -gt 0 ]] && git_items+=("*${unstaged_count}")
 
-	untracked_count="$(git status --porcelain | /usr/bin/grep -c '??')"
+	untracked_count="$(git status --porcelain 2>/dev/null | /usr/bin/grep -c '??')"
 	[[ $untracked_count -gt 0 ]] && git_items+=("?${untracked_count}")
 
 	hook_com[misc]="⎇ ${(j: :)git_items}"
