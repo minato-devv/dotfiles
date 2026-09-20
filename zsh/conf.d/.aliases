@@ -1,10 +1,9 @@
-alias ls='ls -Al'
-alias ll='ls -Al'
+alias ls='ls -Alht'
 alias s='du -sh .* * | sort -h'
 
 #alias cat='bat'
 alias vim='nvim'
-alias grep='grep -hIE'
+alias grep='grep --color=always -nHIE'
 alias which='which -a'
 alias qpath='print -l $path | xargs -I {} ls -1 {} 2>/dev/null | grep -hIE'
 
