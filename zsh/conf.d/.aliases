@@ -1,13 +1,11 @@
 alias ls='ls -Alht'
 alias s='du -sh .* * | sort -h'
-alias #cat='bat'
 alias vim='nvim'
 alias grep='grep --color=always -nHIE'
 alias which='which -a'
 alias qpath='print -l $path | xargs -I {} ls -1 {} 2>/dev/null | grep -hIE'
 alias ql='qlmanage -p'
 alias top='top -s 10 -n 15 -o mem -stats command,cpu,mem,state,time,pid'
-alias #ff='fastfetch'
 alias cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'"
 alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50'
 alias pds='pmset displaysleepnow'
@@ -46,6 +44,7 @@ z() {
         v) file="$HOME/.zshenv" ;;
         p) file="$ZDOTDIR/.zprofile" ;;
         a) file="$ZDOTDIR/conf.d/.aliases" ;;
+        ag) file="$ZDOTDIR/conf.d/.git-aliases" ;;
 		b) file="$ZDOTDIR/conf.d/.bindkey" ;;
 		f) file="$ZDOTDIR/conf.d/.vcs_info" ;;
 		t) file="$ZDOTDIR/conf.d/.transient_prompt" ;;

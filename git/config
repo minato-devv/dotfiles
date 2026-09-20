@@ -4,12 +4,6 @@
 	editor = nvim
 [init]
 	defaultBranch = main
-[pull]
-	rebase = true
-[fetch]
-	prune = true
-;[pager]
-;	diff = false
 
 ;git help --config | rg "^advice\." | xargs -I {} git config --global {} false
 [advice]

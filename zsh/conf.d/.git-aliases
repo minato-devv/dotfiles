@@ -14,7 +14,7 @@ gc='git commit --verbose'
 gcm='git commit -m'
 gcam='git commit --all --message'
 gca='git commit --verbose --all'
-gcad='git commit --amend'
+gcad='git commit --verbose --amend'
 gcadm='git commit --amend --message'
 
 ga='git add'
@@ -32,6 +32,8 @@ gp='git push'
 gpo='git push origin'
 gpuom='git push -u origin main'
 
+gf='git fetch'
+gpl='git pull'
 gplr='git pull --rebase'
 gplm='git pull --merge'
 
@@ -53,5 +55,8 @@ gtd='git tag -d'
 gd='git diff'
 gds='git diff --staged'
 gdh='git diff HEAD'
+
+gm='git merge'
+grb='git rebase'
 
 EOF
