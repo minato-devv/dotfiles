@@ -22,6 +22,7 @@ alias fpath='print -l $fpath'
 alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
 alias giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
 alias gitrem='open $(giturl)'
+alias gitalias="alias | \grep '^g'"
 
 bckp-studies() {
 	rsync -avP --delete --exclude '.Spotlight-*' --exclude '.Trashes' --exclude '.fseventsd' "/Volumes/Studies/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Academics/"
