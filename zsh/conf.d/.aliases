@@ -23,7 +23,8 @@ fpath='print -l $fpath' \
 icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"' \
 giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'" \
 gitrem='open $(giturl)' \
-gitalias="alias | \grep '^g'"
+gitalias="alias | \grep '^g'" \
+commit='fm respond --model pcc "Generate a git commit message based on this git diff. Output only the message. $(gdh)"'
 
 bckp-studies() {
 	rsync -avP --delete --exclude '.TemporaryItems' --exclude '.DocumentRevisions-V100' --exclude '.Spotlight-*' --exclude '.Trashes' --exclude '.fseventsd' "/Volumes/Studies/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Academics/"
