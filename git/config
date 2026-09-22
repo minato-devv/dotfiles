@@ -2,7 +2,7 @@
 	name = minato-devv-local
 	email = 243439570+minato-devv@users.noreply.github.com
 [core]
-	editor = nvim
+	editor = vim
 	pager = less
 [init]
 	defaultBranch = main
