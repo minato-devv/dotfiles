@@ -1,3 +1,7 @@
+if [[ -o interactive ]]; then
+    mkdir -p "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME"
+fi
+
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=10000
