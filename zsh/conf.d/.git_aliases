@@ -1,0 +1,59 @@
+alias \
+gl='git log' \
+glp='git log -p' \
+glG='git log -E -G' \
+glg='git log -E --grep' \
+gls='git log --stat' \
+glS='git log -S' \
+glgd='git log --graph --decorate' \
+glod='git log --oneline --decorate' \
+glfb='git log --pretty=format:"%h %d %s%n%b" --decorate' \
+ \
+gc='git commit --verbose' \
+gcm='git commit -m' \
+gcam='git commit --all --message' \
+gca='git commit --verbose --all' \
+gcad='git commit --verbose --amend' \
+gcadm='git commit --amend --message' \
+ \
+ga='git add' \
+gaa='git add --all' \
+ \
+gb='git branch -a -vv' \
+gbd='git branch -d' \
+gbD='git branch -D' \
+gsw='git switch' \
+gswc='git switch -c' \
+ \
+gcl='git clone' \
+ \
+gp='git push' \
+gpo='git push origin' \
+gpuom='git push -u origin main' \
+ \
+gf='git fetch' \
+gpl='git pull' \
+gplr='git pull --rebase' \
+gplm='git pull --merge' \
+ \
+grs='git restore --staged' \
+gr='git restore' \
+ \
+grt='git remote -v' \
+grta='git remote add' \
+ \
+gss='git status --short' \
+gs='git status' \
+gsv='git status -vv' \
+ \
+gt='git tag' \
+gta='git tag -a' \
+gtl='git tag' \
+gtd='git tag -d' \
+ \
+gd='git diff' \
+gds='git diff --staged' \
+gdh='git diff HEAD' \
+ \
+gm='git merge' \
+grb='git rebase'

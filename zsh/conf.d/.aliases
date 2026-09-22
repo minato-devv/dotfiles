@@ -1,31 +1,32 @@
-alias ls='ls -Alht'
-alias s='du -sh .* * | sort -h'
-alias vim='nvim'
-alias grep='grep --color=always -nHIE'
-alias which='which -a'
-alias qpath='print -l $path | xargs -I {} ls -1 {} 2>/dev/null | grep -hIE'
-alias ql='qlmanage -p'
-alias top='top -s 10 -n 15 -o mem -stats command,cpu,mem,state,time,pid'
-alias cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'"
-alias {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50'
-alias pds='pmset displaysleepnow'
-alias flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
-alias bckp-dotfiles='rsync -avP --delete --exclude ".git/" --exclude ".DS_Store" "$HOME/Dev/dotfiles/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/dotfiles-bckp/"'
-alias mcma='make clean && make all'
-alias nosleep='caffeinate -s &'
-alias allowsleep='killall caffeinate'
-alias bugcp='brew update; brew upgrade --greedy; brew cleanup --prune=all'
-alias bbl='brew bundle list --file ~/.homebrew/Brewfile'
-alias bbd='brew bundle dump --force --file ~/.homebrew/Brewfile'
-alias path='print -l $path'
-alias fpath='print -l $fpath'
-alias icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"'
-alias giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'"
-alias gitrem='open $(giturl)'
-alias gitalias="alias | \grep '^g'"
+alias \
+la='ls -AFt' \
+ll='ls -Alht' \
+s='du -hs' \
+grep='grep --color=always -nHIE' \
+which='which -a' \
+qpath='print -l $path | xargs -I {} ls -1 {} 2>/dev/null | grep -hIE' \
+ql='qlmanage -p' \
+top='top -s 10 -n 15 -o mem -stats command,cpu,mem,state,time,pid' \
+cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'" \
+{ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50' \
+pds='pmset displaysleepnow' \
+flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder' \
+bckp-dotfiles='rsync -avP --delete --exclude ".git/" --exclude ".DS_Store" "$HOME/Dev/dotfiles/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/dotfiles-bckp/"' \
+mcma='make clean && make all' \
+nosleep='caffeinate -s &' \
+allowsleep='killall caffeinate' \
+bugcp='brew update; brew upgrade --greedy; brew cleanup --prune=all' \
+bbl='brew bundle list --file ~/.homebrew/Brewfile' \
+bbd='brew bundle dump --force --file ~/.homebrew/Brewfile' \
+path='print -l $path' \
+fpath='print -l $fpath' \
+icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"' \
+giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'" \
+gitrem='open $(giturl)' \
+gitalias="alias | \grep '^g'"
 
 bckp-studies() {
-	rsync -avP --delete --exclude '.Spotlight-*' --exclude '.Trashes' --exclude '.fseventsd' "/Volumes/Studies/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Academics/"
+	rsync -avP --delete --exclude '.TemporaryItems' --exclude '.DocumentRevisions-V100' --exclude '.Spotlight-*' --exclude '.Trashes' --exclude '.fseventsd' "/Volumes/Studies/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Academics/"
 }
 
 copypath() { 
@@ -40,24 +41,23 @@ mkcd() {
 z() {
     local file
     case "$1" in
-		r) exec zsh -li ;;
+	r) exec $SHELL -li ;;
         i) file="$ZDOTDIR/.zshrc" ;;
         v) file="$HOME/.zshenv" ;;
         p) file="$ZDOTDIR/.zprofile" ;;
         a) file="$ZDOTDIR/conf.d/.aliases" ;;
-        ag) file="$ZDOTDIR/conf.d/.git-aliases" ;;
-		b) file="$ZDOTDIR/conf.d/.bindkey" ;;
-		f) file="$ZDOTDIR/conf.d/.vcs_info" ;;
-		t) file="$ZDOTDIR/conf.d/.transient_prompt" ;;
-		g) file="$XDG_CONFIG_HOME/ghostty/config" ;;
+        ag) file="$ZDOTDIR/conf.d/.git_aliases" ;;
+	b) file="$ZDOTDIR/conf.d/.bindkey" ;;
+	f) file="$ZDOTDIR/conf.d/.vcs_info" ;;
+	t) file="$ZDOTDIR/conf.d/.transient_prompt" ;;
+	g) file="$XDG_CONFIG_HOME/ghostty/config" ;;
         *) return 1 ;;
     esac
 	case "$2" in
-		s) source "$file" && echo "Sourced $file" ;;
-		e|"") "${EDITOR:-nvim}" "$file" && echo "Edited $file" ;;
-		c) cat "$file" ;;
-		b) bat "$file" ;;
-		*) echo "Unknown action: $2" ;;
+		s) source "$file" ;;
+		e|"") "${EDITOR:-vim}" "$file" ;;
+		c) cat "$file" | ${PAGER:-more} ;;
+		*) return 1 ;;
 	esac
 }
 

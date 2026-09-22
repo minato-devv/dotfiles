@@ -3,12 +3,13 @@
 	email = 243439570+minato-devv@users.noreply.github.com
 [core]
 	editor = nvim
+	pager = less
 [init]
 	defaultBranch = main
 [color]
 	ui = false
 
-;git help --config | rg "^advice\." | xargs -I {} git config --global {} false
+;git help --config | grep -E "^advice\." | xargs -I {} git config --global {} false
 ;[advice]
 ;	addEmbeddedRepo = false
 ;	addEmptyPathspec = false

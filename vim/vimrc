@@ -1,0 +1,15 @@
+syntax off
+highlight Normal ctermbg=NONE guibg=NONE
+
+set number
+set relativenumber
+
+set autoindent
+set smartindent
+set tabstop=4
+set shiftwidth=4
+
+set cursorline
+set cursorcolumn
+
+set clipboard=unnamedplus

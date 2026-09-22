@@ -10,10 +10,11 @@ opt.cursorlineopt = "line"
 -- opt.relativenumber = true
 opt.statuscolumn = " %{v:lnum} %{v:relnum} "
 opt.termguicolors = false
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none' })
-vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 6 })
-vim.api.nvim_set_hl(0, 'CursorColumn', { ctermbg = 6 })
-vim.api.nvim_set_hl(0, 'SignColumn', { ctermbg = 'none' })
+-- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none' })
+-- vim.api.nvim_set_hl(0, 'Cursorline', { ctermbg = 6 })
+-- vim.api.nvim_set_hl(0, 'CursorColumn', { ctermbg = 6 })
+-- vim.api.nvim_set_hl(0, 'SignColumn', { ctermbg = 'none' })
+vim.api.nvim_set_hl(0, "Normal", {})
 opt.foldenable = true
 opt.foldmethod = 'expr'
 opt.foldlevelstart = 99
@@ -24,7 +25,7 @@ opt.linebreak = true
 opt.wrap = true
 opt.splitright = true
 opt.list = true
-opt.listchars = { tab = "⇥ ", trail = "·", }
+opt.listchars = { tab = "| ", trail = "·", }
 opt.autoindent = true
 opt.smartindent = true
 opt.tabstop = 4
@@ -39,6 +40,8 @@ opt.clipboard = "unnamedplus"
 opt.confirm = true
 vim.g.netrw_banner = 0
 opt.mouse = ""
+vim.cmd('syntax off')
+vim.cmd('hi clear')
 
 -- Normal mode mappings
 vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { desc = "Move line down" })

@@ -40,7 +40,13 @@ bindkey -e
 autoload -Uz edit-command-line && zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-# for i in $ZDOTDIR/plugins/*(.N); do source $i; done
-for i in $ZDOTDIR/conf.d/*(.N); do source $i; done
 for i in $ZDOTDIR/functions/*(.N); do autoload -Uz $i; done
+# for i in $ZDOTDIR/plugins/*(.N); do source $i; done
+
+# for i in $ZDOTDIR/conf.d/*(.N); do source $i; done
+source $ZDOTDIR/conf.d/.aliases
+source $ZDOTDIR/conf.d/.git_aliases
+# source $ZDOTDIR/conf.d/.transient_prompt
+# source $ZDOTDIR/conf.d/.vcs_info
+# source $ZDOTDIR/conf.d/.bindkey
 export PROMPT="%# "
