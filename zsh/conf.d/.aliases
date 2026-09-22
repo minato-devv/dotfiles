@@ -24,7 +24,7 @@ icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"' \
 giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'" \
 gitrem='open $(giturl)' \
 gitalias="alias | \grep '^g'" \
-commit='fm respond --model pcc "You are an expert developer and git user who generates best practice, detailed, and easy-to-read commit messages.\nGenerate a git commit message based on the following git diff. Output only the message.\n$(gdh)"'
+commit='fm respond --model pcc "You are an expert developer and git user who generates best practice, detailed, and easy-to-read commit messages.\nGenerate a git commit message based on the following git diff. Output only the message. Include a header for the generic commit message and a body separated by a blank line that outline the changes in greater detail. Start the header with chore, fix, add, feature, etc that best fits the commit.\n$(gdh)"'
 
 bckp-studies() {
 	rsync -avP --delete --exclude '.TemporaryItems' --exclude '.DocumentRevisions-V100' --exclude '.Spotlight-*' --exclude '.Trashes' --exclude '.fseventsd' "/Volumes/Studies/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Academics/"
