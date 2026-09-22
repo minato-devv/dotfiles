@@ -15,9 +15,8 @@ bckp-dotfiles='rsync -avP --delete --exclude ".git/" --exclude ".DS_Store" "$HOM
 mcma='make clean && make all' \
 nosleep='caffeinate -s &' \
 allowsleep='killall caffeinate' \
-bugcp='brew update; brew upgrade --greedy; brew cleanup --prune=all' \
-bbl='brew bundle list --file ~/.homebrew/Brewfile' \
-bbd='brew bundle dump --force --file ~/.homebrew/Brewfile' \
+bbl="brew bundle list --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
+bbd="brew bundle dump --force --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
 path='print -l $path' \
 fpath='print -l $fpath' \
 icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"' \
@@ -42,17 +41,18 @@ mkcd() {
 z() {
     local file
     case "$1" in
-	r) exec $SHELL -li ;;
-        i) file="$ZDOTDIR/.zshrc" ;;
-        v) file="$HOME/.zshenv" ;;
-        p) file="$ZDOTDIR/.zprofile" ;;
-        a) file="$ZDOTDIR/conf.d/.aliases" ;;
-        ag) file="$ZDOTDIR/conf.d/.git_aliases" ;;
-	b) file="$ZDOTDIR/conf.d/.bindkey" ;;
-	f) file="$ZDOTDIR/conf.d/.vcs_info" ;;
-	t) file="$ZDOTDIR/conf.d/.transient_prompt" ;;
-	g) file="$XDG_CONFIG_HOME/ghostty/config" ;;
-        *) return 1 ;;
+		r) exec $SHELL -li ;;
+		i) file="$ZDOTDIR/.zshrc" ;;
+		v) file="$HOME/.zshenv" ;;
+		p) file="$ZDOTDIR/.zprofile" ;;
+		a) file="$ZDOTDIR/conf.d/.aliases" ;;
+		ag) file="$ZDOTDIR/conf.d/.git_aliases" ;;
+		b) file="$ZDOTDIR/conf.d/.bindkey" ;;
+		f) file="$ZDOTDIR/conf.d/.vcs_info" ;;
+		t) file="$ZDOTDIR/conf.d/.transient_prompt" ;;
+		g) file="$XDG_CONFIG_HOME/ghostty/config" ;;
+		n) file="$XDG_CONFIG_HOME/vim/vimrc" ;;
+		*) return 1 ;;
     esac
 	case "$2" in
 		s) source "$file" ;;

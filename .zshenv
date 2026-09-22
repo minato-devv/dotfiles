@@ -11,6 +11,11 @@ export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 export HOMEBREW_NO_ASK=1
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
+export HOMEBREW_CONFIG_HOME="$XDG_CONFIG_HOME/homebrew"
+export HOMEBREW_CACHE="$XDG_CACHE_HOME/homebrew"
+export HOMEBREW_LOGS="$XDG_STATE_HOME/homebrew/logs"
+PYTHON_HISTORY=/dev/null
+LESSHISTFILE=/dev/null
 # export CLICOLOR=1
 
 export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"

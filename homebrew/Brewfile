@@ -10,6 +10,8 @@ brew "hf"
 brew "pandoc"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
+# Check your $HOME for unwanted files and directories
+brew "xdg-ninja", args: ["HEAD"]
 cask "font-terminus"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
