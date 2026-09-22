@@ -3,3 +3,4 @@ nvim/nvim-pack-lock.json
 mactop/config.json
 zsh/.zcompdump
 zsh/.zsh_sessions/
+vim/.netrwhist
