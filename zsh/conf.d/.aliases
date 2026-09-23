@@ -4,8 +4,10 @@ ll='ls -Alht' \
 s='du -hs' \
 grep='grep --color=always -nHIE' \
 which='which -a' \
+mdfind='mdfind 2>/dev/null' \
 qpath='print -l $path | xargs -I {} ls -1 {} 2>/dev/null | grep -hIE' \
 ql='qlmanage -p' \
+buu='brew update && brew upgrade' \
 top='top -s 10 -n 15 -o mem -stats command,cpu,mem,state,time,pid' \
 cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'" \
 {ei,energy-impact}='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50' \
