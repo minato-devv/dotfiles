@@ -6,6 +6,8 @@ brew "git"
 brew "python@3.14"
 # Client library for huggingface.co hub
 brew "hf"
+# NCurses Disk Usage
+brew "ncdu"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Modernized, complete, self-contained TeX/LaTeX engine
@@ -15,5 +17,3 @@ brew "xdg-ninja", args: ["HEAD"]
 cask "font-terminus"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Virtual machines UI using QEMU
-cask "utm"

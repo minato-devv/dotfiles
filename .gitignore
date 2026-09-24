@@ -4,3 +4,5 @@ mactop/config.json
 zsh/.zcompdump
 zsh/.zsh_sessions/
 vim/.netrwhist
+homebrew/trust.json
+homebrew/trust.json.lock
