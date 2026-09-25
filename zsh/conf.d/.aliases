@@ -41,27 +41,41 @@ mkcd() {
 }
 
 z() {
-    local file
-    case "$1" in
-		r) exec $SHELL -li ;;
-		i) file="$ZDOTDIR/.zshrc" ;;
-		v) file="$HOME/.zshenv" ;;
-		p) file="$ZDOTDIR/.zprofile" ;;
-		a) file="$ZDOTDIR/conf.d/.aliases" ;;
-		ag) file="$ZDOTDIR/conf.d/.git_aliases" ;;
-		b) file="$ZDOTDIR/conf.d/.bindkey" ;;
-		f) file="$ZDOTDIR/conf.d/.vcs_info" ;;
-		t) file="$ZDOTDIR/conf.d/.transient_prompt" ;;
-		g) file="$XDG_CONFIG_HOME/ghostty/config" ;;
-		n) file="$XDG_CONFIG_HOME/vim/vimrc" ;;
-		*) return 1 ;;
-    esac
-	case "$2" in
-		s) source "$file" ;;
-		e|"") "${EDITOR:-vim}" "$file" ;;
-		c) cat "$file" | ${PAGER:-more} ;;
-		*) return 1 ;;
-	esac
+  local file
+  local -A file_map
+  
+  file_map=(
+    [r]="$SHELL -li"
+    [i]="$ZDOTDIR/.zshrc"
+    [v]="$HOME/.zshenv"
+    [p]="$ZDOTDIR/.zprofile"
+    [a]="$ZDOTDIR/conf.d/.aliases"
+    [ag]="$ZDOTDIR/conf.d/.git_aliases"
+    [b]="$ZDOTDIR/conf.d/.bindkey"
+    [f]="$ZDOTDIR/conf.d/.vcs_info"
+    [t]="$ZDOTDIR/conf.d/.transient_prompt"
+    [g]="$XDG_CONFIG_HOME/ghostty/config"
+    [n]="$XDG_CONFIG_HOME/vim/vimrc"
+  )
+
+  if [[ -z ${file_map[$1]} ]]; then
+    echo "Unknown shortcut: $1"
+    return 1
+  fi
+
+  file="${file_map[$1]}"
+
+  if [[ "$1" == "r" ]]; then
+    eval "$file"
+    return
+  fi
+
+  case "$2" in
+    s) source "$file" ;;
+    e|"") "${EDITOR:-vim}" "$file" ;;
+    c) cat "$file" | ${PAGER:-more} ;;
+    *) return 1 ;;
+  esac
 }
 
 list_repos() {
