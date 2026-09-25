@@ -2,6 +2,7 @@ typeset -U path fpath
 
 path=("$HOME/.local/bin" $path)
 path=("/opt/homebrew/bin" $path)
+path=("/Applications/SF Symbols.app/Contents/Executables/" $path)
 
 fpath=("$ZDOTDIR/functions" $fpath)
 fpath=("$ZDOTDIR/completion" $fpath)
