@@ -8,12 +8,17 @@ brew "python@3.14"
 brew "hf"
 # NCurses Disk Usage
 brew "ncdu"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Adds an OCR text layer to scanned PDF files
+brew "ocrmypdf"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
-# Check your $HOME for unwanted files and directories
-brew "xdg-ninja", args: ["HEAD"]
-cask "font-terminus"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
