@@ -6,8 +6,12 @@
 	pager = less
 [init]
 	defaultBranch = main
-[color]
-	ui = false
+; [color]
+; 	ui = false
+
+[color "diff"]
+new = blue
+old = red
 
 ;git help --config | grep -E "^advice\." | xargs -I {} git config --global {} false
 ;[advice]

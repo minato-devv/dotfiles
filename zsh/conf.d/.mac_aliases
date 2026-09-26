@@ -1,0 +1,30 @@
+alias \
+mdfind='mdfind 2>/dev/null' \
+qpath='print -l $path | xargs -I {} ls -1 {} 2>/dev/null | grep -hIE' \
+ql='qlmanage -p' \
+buu='brew update && brew upgrade' \
+top='top -s 10 -n 15 -o mem -stats command,cpu,mem,state,time,pid' \
+cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'" \
+ei='sudo powermetrics -n 1 --samplers tasks --show-process-energy | head -n 50' \
+pds='pmset displaysleepnow' \
+flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder' \
+bckp-dotfiles='rsync -avP --delete --exclude ".git/" --exclude ".DS_Store" "$HOME/Dev/dotfiles/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/dotfiles-bckp/"' \
+clang90='clang -std=c90 -Wno-implicit-int -Wno-implicit-function-declaration' \
+nosleep='caffeinate -s &' \
+allowsleep='killall caffeinate' \
+bbl="brew bundle list --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
+bbd="brew bundle dump --force --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
+icloud='cd "$HOME/Library/Mobile Documents/com~apple~CloudDocs"' \
+commit='fm respond --model pcc "You are an expert developer and git user who generates best practice, detailed, and easy-to-read commit messages.\nGenerate a git commit message based on the following git diff. Output only the message. Include a header for the generic commit message and a body separated by a blank line that outline the changes in greater detail. Start the header with chore, fix, add, feature, etc that best fits the commit.\n$(gss && gdh)"'
+
+bckp-studies() {
+	rsync -avP --delete --exclude '.TemporaryItems' --exclude '.DocumentRevisions-V100' --exclude '.Spotlight-*' --exclude '.Trashes' --exclude '.fseventsd' "/Volumes/Studies/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Academics/"
+}
+
+list_repos() {
+	find $HOME/Dev -maxdepth 3 -type f -path '*/.git/config' -exec grep -EIoh '(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?' {} +
+}
+
+mvers() {
+	sw_vers | awk '/ProductVersion:/{v=$2}/BuildVersion:/{b=$2}END{print "macOS "v" ("b")"}'
+}

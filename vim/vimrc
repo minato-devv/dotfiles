@@ -6,6 +6,13 @@ set relativenumber
 
 set autoindent
 set smartindent
+set noexpandtab
+set incsearch
+set hlsearch
+set hidden
+set mouse=
+set scrolloff=8
+set undofile
 set tabstop=4
 set shiftwidth=4
 

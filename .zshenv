@@ -1,5 +1,5 @@
-export VISUAL='vim'
-export EDITOR='vim'
+export VISUAL='nvim'
+export EDITOR='nvim'
 export PAGER='less'
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -16,6 +16,6 @@ export HOMEBREW_CACHE="$XDG_CACHE_HOME/homebrew"
 export HOMEBREW_LOGS="$XDG_STATE_HOME/homebrew/logs"
 PYTHON_HISTORY=/dev/null
 LESSHISTFILE=/dev/null
-# export CLICOLOR=1
+export CLICOLOR=1
 
 export ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs"

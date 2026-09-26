@@ -21,14 +21,11 @@ setopt interactive_comments
 setopt no_beep
 setopt chase_links
 setopt prompt_subst
-setopt cdable_vars
 setopt ignore_eof
-
-autoload -Uz add-zsh-hook
 
 zmodload zsh/complist
 autoload -Uz compinit  && compinit
-# autoload -Uz colors && colors
+
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -40,13 +37,16 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
 zstyle ':completion:*' list-dirs-first true
 
-#for i in $ZDOTDIR/functions/*(.N); do autoload -Uz $i; done
-# for i in $ZDOTDIR/plugins/*(.N); do source $i; done
-
+for i in $ZDOTDIR/functions/*(.N); do autoload -Uz $i; done
+for i in $ZDOTDIR/plugins/*(.N); do source $i; done
 # for i in $ZDOTDIR/conf.d/*(.N); do source $i; done
+
 source $ZDOTDIR/conf.d/.aliases
 source $ZDOTDIR/conf.d/.git_aliases
+source $ZDOTDIR/conf.d/.mac_aliases
+# source $ZDOTDIR/conf.d/.bindkey
 # source $ZDOTDIR/conf.d/.transient_prompt
 # source $ZDOTDIR/conf.d/.vcs_info
-source $ZDOTDIR/conf.d/.bindkey
-export PROMPT="%# "
+# export PROMPT="%# "
+
+bindkey -e
