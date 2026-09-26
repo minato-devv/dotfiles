@@ -1,4 +1,5 @@
 alias \
+ls='ls -Fa' \
 la='ls -AFt' \
 ll='ls -Alht' \
 s='du -hs' \
@@ -15,6 +16,7 @@ pds='pmset displaysleepnow' \
 flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder' \
 bckp-dotfiles='rsync -avP --delete --exclude ".git/" --exclude ".DS_Store" "$HOME/Dev/dotfiles/" "/Users/user/Library/Mobile Documents/com~apple~CloudDocs/Documents/dotfiles-bckp/"' \
 mcma='make clean && make all' \
+clang90='clang -std=c90 -Wno-implicit-int -Wno-implicit-function-declaration' \
 nosleep='caffeinate -s &' \
 allowsleep='killall caffeinate' \
 bbl="brew bundle list --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
