@@ -36,6 +36,7 @@ zstyle ':completion:*' file-sort date
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
 zstyle ':completion:*' list-dirs-first true
+zstyle ':completion:*:*:(vim|nvim|cat):*' file-patterns '*(-.)'
 
 for i in $ZDOTDIR/functions/*(.N); do autoload -Uz $i; done
 for i in $ZDOTDIR/plugins/*(.N); do source $i; done
