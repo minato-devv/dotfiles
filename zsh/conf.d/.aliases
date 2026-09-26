@@ -68,7 +68,7 @@ z() {
   file="${file_map[$1]}"
 
   if [[ "$1" == "r" ]]; then
-    eval "$file"
+    exec "$file"
     return
   fi
 
