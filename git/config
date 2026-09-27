@@ -62,3 +62,4 @@ old = red
 ;	updateSparsePath = false
 ;	waitingForEditor = false
 ;	worktreeAddOrphan = false
+;gh repo list --visibility private --json nameWithOwner -q '.[].nameWithOwner' | xargs -I {} gh repo edit {} --visibility public --accept-visibility-change-consequences
