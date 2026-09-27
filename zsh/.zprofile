@@ -4,7 +4,11 @@ path=("/opt/homebrew/bin" $path)
 path=("/Applications/SF Symbols.app/Contents/Executables/" $path)
 
 fpath=("$ZDOTDIR/functions" $fpath)
-fpath=("$ZDOTDIR/completion" $fpath)
+fpath=(
+	"$ZDOTDIR/completion" 
+	"/opt/homebrew/completions/zsh"
+	$fpath
+)
 
 cdpath=(
 	"$XDG_CONFIG_HOME"
