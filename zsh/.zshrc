@@ -51,3 +51,17 @@ source $ZDOTDIR/conf.d/.mac_aliases
 # export PROMPT="%# "
 
 bindkey -e
+
+autoload -Uz add-zsh-hook zsh_directory_name_generic zdn_wrapper 
+add-zsh-hook -U zsh_directory_name zdn_wrapper
+zdn_wrapper() {
+	local -A zdn_top=(
+		g	$HOME/git
+		:default: /:second1
+	)
+	local -A second1=()
+	for r in $HOME/git/*(/N); do
+		second1[${r:t}]=${r:t}
+	done
+	zsh_directory_name_generic "$@"
+}
