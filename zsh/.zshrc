@@ -8,6 +8,7 @@ export SAVEHIST=10000
 
 setopt auto_cd
 setopt glob_dots
+setopt glob_subst
 setopt extended_history
 setopt share_history
 setopt hist_ignore_dups
@@ -56,12 +57,37 @@ autoload -Uz add-zsh-hook zsh_directory_name_generic zdn_wrapper
 add-zsh-hook -U zsh_directory_name zdn_wrapper
 zdn_wrapper() {
 	local -A zdn_top=(
-		g	$HOME/git
-		:default: /:second1
+		g	$HOME/git/:second1
+		c	$HOME/.config/:second2
+		v	/Volumes
 	)
+
 	local -A second1=()
-	for r in $HOME/git/*(/N); do
-		second1[${r:t}]=${r:t}
+	for r in $HOME/git/*(-/NOc); do
+		local k=${${r:t}[1]} c=1
+		while [[ -n ${second1[$k]} ]]; do
+			k="${${r:t}[1]}$((++c))"
+		done
+		second1[$k]=${r:t}
+	done
+
+	local -A second2=()
+	for r in $HOME/.config/*(-/NOc); do
+		local k=${${r:t}[1]} c=1
+		while [[ -n ${second2[$k]} ]]; do
+			k="${${r:t}[1]}$((++c))"
+		done
+		second2[$k]=${r:t}
+	done
+	second2[z]="zsh/:second3"
+
+	local -A second3=()
+	for r in $HOME/.config/zsh/*(-/NOc); do
+		local k=${${r:t}[1]} c=1
+		while [[ -n ${second3[$k]} ]]; do
+			k="${${r:t}[1]}$((++c))"
+		done
+		second3[$k]=${r:t}
 	done
 	zsh_directory_name_generic "$@"
 }
