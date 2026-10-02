@@ -13,7 +13,7 @@ vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.expandtab = false
 vim.opt.shiftround = true
-vim.opt.shiftwidth = 0
+vim.opt.shiftwidth = 4
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = 'split'
@@ -23,8 +23,7 @@ vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.mouse = ""
 
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { desc = "Move line down" })
-vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { desc = "Move line up" })
-
-vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==')
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==')
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")

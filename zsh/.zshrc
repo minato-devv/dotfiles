@@ -1,4 +1,5 @@
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export CLICOLOR=1
 export HISTSIZE=10000
 export SAVEHIST=10000
 
@@ -18,8 +19,10 @@ autoload -Uz vcs_info add-zsh-hook
 add-zsh-hook precmd vcs_info
 
 zstyle ':vcs_info:*' enable git
-# zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats ' %b'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr ' *'
+zstyle ':vcs_info:*' stagedstr ' +'
+zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
 
 zmodload zsh/complist
 autoload -Uz compinit  && compinit

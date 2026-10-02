@@ -1,5 +1,5 @@
 alias \
-ls='ls -Fa' \
+ls='ls -FA' \
 path='print -l $path' \
 fpath='print -l $fpath' \
 

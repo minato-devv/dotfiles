@@ -1,8 +1,5 @@
 alias \
 mdfind='mdfind 2>/dev/null' \
-top='top -s 10 -n 15 -o mem -stats command,cpu,mem,state,time,pid' \
-cycles="system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1/p'" \
-flush-dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder' \
 bbl="brew bundle list --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
 bbd="brew bundle dump --force --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
 commit='fm respond --model pcc "You are an expert developer and git user who generates best practice, detailed, and easy-to-read commit messages.\nGenerate a git commit message based on the following git diff. Output only the message. Include a header for the generic commit message and a body separated by a blank line that outline details briefly. Start the header with chore, fix, add, feature, etc that best fits the commit.\n$(gss && gdh)"'
@@ -13,4 +10,5 @@ mvers() {
 	df -H / | awk 'NR==2 {print $4}'
 	echo $SHELL | sed 's|/bin/||'
 	uptime | sed -E 's/.*up ([^,]*).*/\1/'
+	system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1 cycles/p'
 }
