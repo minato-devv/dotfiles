@@ -1,0 +1,6 @@
+sw_vers | awk '/ProductVersion:/{v=$2}/BuildVersion:/{b=$2}END{print "macOS "v" ("b")"}'
+pmset -g batt | grep -Eo '\d+%' | head -1
+df -H / | awk 'NR==2 {print $4}'
+echo $SHELL | sed 's|/bin/||'
+uptime | sed -E 's/.*up ([^,]*).*/\1/'
+system_profiler SPPowerDataType | sed -nE 's/^.*Cycle Count: ([0-9]+)/\1 cycles/p'

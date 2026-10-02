@@ -38,14 +38,10 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
 zstyle ':completion:*' list-dirs-first true
 
-for i in $ZDOTDIR/functions/*(.N); do autoload -Uz $i; done
+for i in $ZDOTDIR/functions/*(.N:t); do autoload -Uz $i; done
 for i in $ZDOTDIR/plugins/*(.N); do source $i; done
-# for i in $ZDOTDIR/conf.d/*(.N); do source $i; done
+for i in $ZDOTDIR/conf.d/*(.N); do source $i; done
 
-source $ZDOTDIR/conf.d/.aliases
-source $ZDOTDIR/conf.d/.git_aliases
-source $ZDOTDIR/conf.d/.mac_aliases
-# source $ZDOTDIR/conf.d/.transient_prompt
 export PROMPT='%~${vcs_info_msg_0_} %# '
 
 bindkey -e
