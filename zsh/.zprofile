@@ -17,7 +17,7 @@ typeset -gUxT CDPATH cdpath
 cdpath=(
 	"$XDG_CONFIG_HOME"
 	"$HOME"
-	"$HOME/Dev"
+	"$HOME/git"
 	"$HOME/College"
 	"$HOME/Documents"
 	"$HOME/Downloads"
