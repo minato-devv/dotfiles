@@ -11,6 +11,7 @@ vim.opt.wrap = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.tabstop = 4
+vim.opt.expandtab = false
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 0
 vim.opt.smartcase = true

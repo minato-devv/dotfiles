@@ -1,25 +1,9 @@
 alias \
 ls='ls -Fa' \
-ll='ls -Alht' \
-s='du -hs' \
-grep='grep --color=always -nHIE' \
-which='which -a' \
-mcma='make clean && make all' \
 path='print -l $path' \
 fpath='print -l $fpath' \
-giturl="git config --get remote.origin.url | sed -E 's/^(https:\/\/github.com\/|git@github.com:)([^/:]+\/[^.]+)(\.git)?$/https:\/\/github.com\/\2\.git/'" \
-gitrem='open $(giturl)' \
-gitalias="alias | \grep '^g'"
-
-z() {
-	local -A c=(
-		[e]=${EDITOR}
-		[s]=source
-		[c]=cat
-	)
-	${c[$1]} ~[c:z]/$2
-}
 
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
+
