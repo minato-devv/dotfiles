@@ -9,7 +9,7 @@ typeset -gUxT FPATH fpath
 fpath=(
 	"$ZDOTDIR/functions"
 	"$ZDOTDIR/completion" 
-	"/opt/homebrew/completions/zsh"
+	/opt/homebrew/share/zsh/site-functions
 	$fpath
 )
 

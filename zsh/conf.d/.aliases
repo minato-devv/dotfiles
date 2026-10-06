@@ -2,8 +2,8 @@ alias \
 ls='ls -FA' \
 path='print -l $path' \
 fpath='print -l $fpath' \
+fjcr='fj repo create -P -r origin -H codeberg.org -S true'
 
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
-

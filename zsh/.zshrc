@@ -27,16 +27,15 @@ zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
 zmodload zsh/complist
 autoload -Uz compinit  && compinit
 
-zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
-zstyle ':completion:*' file-sort date
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format '%B%U%d%u%b'
-zstyle ':completion:*' list-dirs-first true
+zstyle ':completion:*:descriptions' format '%S%d (%n)%s'
+zstyle ':completion:*' file-sort access
 
 for i in $ZDOTDIR/functions/*(.N:t); do autoload -Uz $i; done
 for i in $ZDOTDIR/plugins/*(.N); do source $i; done

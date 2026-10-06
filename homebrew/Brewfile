@@ -1,3 +1,11 @@
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Open-source framework for augmenting humans using AI
+brew "fabric-ai"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# CLI tool for interacting with Forgejo
+brew "forgejo-cli"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -22,3 +30,5 @@ brew "poppler"
 brew "tectonic"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Read-only disk space visualiser
+cask "neodisk"
