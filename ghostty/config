@@ -13,7 +13,7 @@ macos-window-shadow = false
 macos-titlebar-proxy-icon = hidden
 confirm-close-surface = false
 split-preserve-zoom = navigation
-title = " "
+# title = " "
 
 mouse-hide-while-typing = false
 cursor-style = bar

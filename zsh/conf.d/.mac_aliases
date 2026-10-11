@@ -1,5 +1,0 @@
-alias \
-mdfind='mdfind 2>/dev/null' \
-bbl="brew bundle list --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
-bbd="brew bundle dump --force --file $XDG_CONFIG_HOME/homebrew/Brewfile" \
-commit='fm respond --model pcc "System Prompt: Git Commit Message Drafter\n - Output format: single line only, no body or footer.\n Prefix with standard type: chore:, fix:, add:, update:, remove:, refactor:, docs:, test:.\n Write concise imperative summary of change; keep under 72 characters.\n No extra text—message only in header. $(gs && gdh)"'

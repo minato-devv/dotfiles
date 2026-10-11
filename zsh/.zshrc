@@ -4,6 +4,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 setopt auto_cd
+setopt auto_pushd
 setopt glob_dots
 setopt glob_subst
 setopt extended_glob
@@ -45,13 +46,27 @@ export PROMPT='%~${vcs_info_msg_0_} %# '
 
 bindkey -e
 
-autoload -Uz zsh_directory_name_generic zdn_wrapper 
-add-zsh-hook -U zsh_directory_name zdn_wrapper
-zdn_wrapper() {
-	local -A zdn_top=(
-		g	$HOME/git
-		c	$HOME/.config
-		v	/Volumes
-	)
-	zsh_directory_name_generic "$@"
-}
+# autoload -Uz zsh_directory_name_generic zdn_wrapper 
+# add-zsh-hook -U zsh_directory_name zdn_wrapper
+# zdn_wrapper() {
+# 	local -A zdn_top=(
+# 		g	$HOME/git
+# 		c	$HOME/.config
+# 		v	/Volumes
+# 	)
+# 	zsh_directory_name_generic "$@"
+# }
+
+autoload -Uz zmv
+autoload -Uz zed
+zmodload zsh/mathfunc
+zmodload zsh/datetime
+
+hash -d cg=~/.config
+hash -d vl=/Volumes
+hash -d zsh=$ZDOTDIR
+hash -d dl=~/Downloads
+hash -d dc=~/Documents
+hash -d sc=~/Pictures/Screenshots
+hash -d git=~/git
+hash -d xc=~/XC
