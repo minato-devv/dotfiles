@@ -20,7 +20,7 @@ setopt hist_find_no_dups
 setopt interactive_comments
 setopt prompt_subst
 
-autoload -Uz add-zsh-hook
+# autoload -Uz add-zsh-hook
 # autoload -Uz vcs_info
 # add-zsh-hook precmd vcs_info
 #
@@ -75,7 +75,7 @@ hash -d git=~/git
 hash -d dot=~/git/dotfiles
 hash -d xc=~/XC
 
-autoload -Uz add-zle-hook-widget
+# autoload -Uz add-zle-hook-widget
 # clear-screen-finish() {
 # 	if [[ -z $BUFFER ]]; then
 # 		zle clear-screen
@@ -97,11 +97,11 @@ bindkey -M simple "^\\" undefined-key
 stty -ixon
 bindkey -M simple "^Q" push-line
 
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search 
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey -M simple "^[[A" up-line-or-beginning-search
-bindkey -M simple "^[[B" down-line-or-beginning-search
+# autoload -Uz up-line-or-beginning-search down-line-or-beginning-search 
+# zle -N up-line-or-beginning-search
+# zle -N down-line-or-beginning-search
+bindkey -M simple "^[[A" up-line-or-history
+bindkey -M simple "^[[B" down-line-or-history
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
