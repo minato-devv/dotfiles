@@ -1,5 +1,6 @@
 alias ls='ls -FA' 
 alias d='dirs -v'
+alias dus='du -sh * 2>/dev/null | sort -h'
 alias path='print -l $path' 
 alias fpath='print -l $fpath' 
 alias fjcr='fj repo create -P -r origin -H codeberg.org -S true'
@@ -79,4 +80,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
 	alias commit='fm respond --model pcc "System Prompt: Git Commit Message Drafter\n - Output format: single line only, no body or footer.\n Prefix with standard type: chore:, fix:, add:, update:, remove:, refactor:, docs:, test:.\n Write concise imperative summary of change; keep under 72 characters.\n No extra text—message only in header. $(gs && gdh)"'
 	alias gcf='ghostty +edit-config'
 	alias ff='fastfetch'
+	alias flush-dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
+	alias list-xc-components='xcrun simctl list devices; xcrun simctl list runtimes; xcrun simctl --set ~/Library/Developer/Xcode/UserData/Previews/Simulator\ Devices list devices; xcrun simctl --set ~/Library/Developer/XCPGDevices list devices'
 fi

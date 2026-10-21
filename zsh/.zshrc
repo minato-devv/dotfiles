@@ -1,4 +1,4 @@
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 mkdir -p "$XDG_CONFIG_HOME" "$ZDOTDIR" "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh" "$XDG_DATA_HOME"
 
@@ -65,15 +65,15 @@ autoload -Uz zargs
 zmodload zsh/mathfunc
 zmodload zsh/datetime
 
-hash -d cg=~/.config
-hash -d vl=/Volumes
-hash -d zsh=$ZDOTDIR
-hash -d dl=~/Downloads
-hash -d dc=~/Documents
-hash -d sc=~/Pictures/Screenshots
-hash -d git=~/git
-hash -d dot=~/git/dotfiles
-hash -d xc=~/XC
+hash -d f=~/.config
+hash -d v=/Volumes
+hash -d z=$ZDOTDIR
+hash -d l=~/Downloads
+hash -d c=~/Documents
+hash -d s=~/Pictures/Screenshots
+hash -d g=~/git
+hash -d d=~/git/dotfiles
+hash -d x=~/XC
 
 # autoload -Uz add-zle-hook-widget
 # clear-screen-finish() {
@@ -127,4 +127,4 @@ bindkey -M simple "^[[D" backward-char
 
 bindkey -A simple main
 
-zprof
+# zprof

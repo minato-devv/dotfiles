@@ -1,9 +1,9 @@
-font-size = 12
-font-family = IoskeleyMonoTerm Nerd Font Mono
+font-size = 16
+font-family = CommitMono Nerd Font
 background-blur = macos-glass-clear
 # background-opacity = 0.7
 # background-opacity-cells = true
-theme = Atlas Ragnarok
+theme = Elementary
 
 auto-update-channel = tip
 link-previews = false

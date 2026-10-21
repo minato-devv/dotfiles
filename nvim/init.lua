@@ -1,9 +1,15 @@
+vim.loader.enable()
+vim.g.have_nerd_font = true
 vim.opt.virtualedit = "block"
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.number = true
 vim.opt.relativenumber = true
+
 vim.opt.termguicolors = true
+vim.opt.background = "dark"
+vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 20
 vim.opt.linebreak = true
@@ -27,3 +33,8 @@ vim.keymap.set('n', '<A-j>', ':m .+1<CR>==')
 vim.keymap.set('n', '<A-k>', ':m .-2<CR>==')
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")
+
+vim.pack.add({
+	'bytebeast/winteriscoming.nvim'
+})
+vim.cmd.colorscheme 'winteriscoming-black'
