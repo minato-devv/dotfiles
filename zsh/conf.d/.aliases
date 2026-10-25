@@ -4,6 +4,7 @@ alias dus='du -sh * 2>/dev/null | sort -h'
 alias path='print -l $path' 
 alias fpath='print -l $fpath' 
 alias fjcr='fj repo create -P -r origin -H codeberg.org -S true'
+alias code-url='open $(git remote -v | awk "NR==1{print $2}" | sed -E "s|ssh://git@(.*)\\.git|https://\\1|")'
 
 alias -s git='git clone' 
 alias -s {py,md,txt}=nvim 
@@ -82,4 +83,5 @@ if [[ "$OSTYPE" == darwin* ]]; then
 	alias ff='fastfetch'
 	alias flush-dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 	alias list-xc-components='xcrun simctl list devices; xcrun simctl list runtimes; xcrun simctl --set ~/Library/Developer/Xcode/UserData/Previews/Simulator\ Devices list devices; xcrun simctl --set ~/Library/Developer/XCPGDevices list devices'
+	alias fj-new='fj repo create -Pp -S true -r origin -H codeberg.org $(basename $PWD)'
 fi

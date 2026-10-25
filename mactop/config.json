@@ -1,6 +1,6 @@
 {
-  "default_layout": "default",
-  "theme": "silver",
+  "default_layout": "micro",
+  "theme": "lime",
   "background": "clear",
   "sort_column": 4,
   "sort_reverse": false

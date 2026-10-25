@@ -1,5 +1,6 @@
 font-size = 16
-font-family = CommitMono Nerd Font
+# font-family = CommitMono Nerd Font
+font-family = Nordwand Mono
 background-blur = macos-glass-clear
 # background-opacity = 0.7
 # background-opacity-cells = true
