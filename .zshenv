@@ -1,5 +1,5 @@
-export VISUAL='nvim'
-export EDITOR='nvim'
+export VISUAL='hx'
+export EDITOR='hx'
 export PAGER='less'
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
