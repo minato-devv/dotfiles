@@ -1,0 +1,14 @@
+theme = "autumn_night"
+
+[editor]
+bufferline = "multiple"
+cursorline = true
+color-modes = true
+scrolloff = 8
+rulers = [80, 120]
+
+[editor.indent-guides]
+render = true
+
+[editor.soft-wrap]
+enable = true   

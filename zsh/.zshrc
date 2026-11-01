@@ -1,4 +1,4 @@
-# zmodload zsh/zprof
+zmodload zsh/zprof
 
 mkdir -p "$XDG_CONFIG_HOME" "$ZDOTDIR" "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh" "$XDG_DATA_HOME"
 
@@ -20,16 +20,16 @@ setopt hist_find_no_dups
 setopt interactive_comments
 setopt prompt_subst
 
-# autoload -Uz add-zsh-hook
-# autoload -Uz vcs_info
-# add-zsh-hook precmd vcs_info
-#
-# zstyle ':vcs_info:*' enable git
-# zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:*' unstagedstr ' *'
-# zstyle ':vcs_info:*' stagedstr '+'
-# zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
-# export PROMPT='%~${vcs_info_msg_0_} %# '
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+add-zsh-hook precmd vcs_info
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr ' *'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
+export PROMPT='%~${vcs_info_msg_0_} %# '
 
 zmodload zsh/complist
 autoload -Uz compinit && compinit -C -d "$XDG_CACHE_HOME/zsh/.zcompdump"
@@ -65,15 +65,13 @@ autoload -Uz zargs
 zmodload zsh/mathfunc
 zmodload zsh/datetime
 
-hash -d f=~/.config
 hash -d v=/Volumes
 hash -d z=$ZDOTDIR
 hash -d l=~/Downloads
-hash -d c=~/Documents
+hash -d d=~/Documents
 hash -d s=~/Pictures/Screenshots
 hash -d g=~/git
-hash -d d=~/git/dotfiles
-hash -d x=~/XC
+hash -d c=~/git/dotfiles
 
 # autoload -Uz add-zle-hook-widget
 # clear-screen-finish() {
@@ -127,4 +125,4 @@ bindkey -M simple "^[[D" backward-char
 
 bindkey -A simple main
 
-# zprof
+zprof
