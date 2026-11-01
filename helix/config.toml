@@ -1,14 +1,76 @@
 theme = "autumn_night"
 
 [editor]
+mouse = false
 bufferline = "multiple"
 cursorline = true
+cursorcolumn = true
 color-modes = true
 scrolloff = 8
-rulers = [80, 120]
+rulers = []
+line-number = "relative"
+shell = ["zsh", "-c"]
+end-of-line-diagnostics = "hint"
+
+[editor.lsp]
+enable = true
+display-progress-messages = true
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = [
+  "mode",
+  "version-control",
+  "spinner",
+  "file-name",
+  "file-modification-indicator"
+]
+# center = [
+#   "diagnostics"
+# ]
+right = [
+  "register",
+  "diagnostics",
+  "position",
+  "position-percentage",
+  "spacer",
+  "separator",
+  "file-base-name",
+  "file-type",
+  "separator",
+  "total-line-numbers"
+]
+
+[editor.file-picker]
+max-depth = 8
+hidden = false
+
+[editor.whitespace.render]
+tab = "all"
+space = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+tab = "→"
 
 [editor.indent-guides]
 render = true
-
-[editor.soft-wrap]
-enable = true   
+character = "╎"
+skip-levels = 1
