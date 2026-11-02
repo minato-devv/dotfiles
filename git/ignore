@@ -1,3 +1,4 @@
+# macOS
 .DS_Store
 .localized
 .LSOverride
@@ -7,4 +8,29 @@
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
+.AppleDouble
+Icon?
+._*
+
+# Xcode and Swift
+build/
+DerivedData/
+xcuserdata/
+.swiftpm/xcode/xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+
+# Python
+.Python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+pip-log.txt
+
+# Zsh
+.zsh_history
