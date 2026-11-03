@@ -2,6 +2,7 @@ theme = "autumn_night"
 
 [editor]
 mouse = false
+# scroll-lines = 0
 bufferline = "multiple"
 cursorline = true
 cursorcolumn = true
@@ -10,14 +11,15 @@ scrolloff = 8
 rulers = []
 line-number = "relative"
 shell = ["zsh", "-c"]
-end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "warning"
 
 [editor.lsp]
 enable = true
 display-progress-messages = true
+display-inlay-hints = true
 
-[editor.inline-diagnostics]
-cursor-line = "warning"
+# [editor.inline-diagnostics]
+# cursor-line = "warning"
 
 [editor.soft-wrap]
 enable = true
