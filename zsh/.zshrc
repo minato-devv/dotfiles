@@ -1,4 +1,5 @@
 zmodload zsh/zprof
+zmodload zsh/zpty
 
 mkdir -p "$XDG_CONFIG_HOME" "$ZDOTDIR" "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh" "$XDG_DATA_HOME"
 
@@ -30,6 +31,7 @@ zstyle ':vcs_info:*' unstagedstr ' *'
 zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
 export PROMPT='%~${vcs_info_msg_0_} %# '
+# export PROMPT='%# '
 
 zmodload zsh/complist
 autoload -Uz compinit && compinit -C -d "$XDG_CACHE_HOME/zsh/.zcompdump"
@@ -47,18 +49,6 @@ zstyle ':completion:*' file-sort access
 for i in $ZDOTDIR/functions/*(.N:t); do autoload -Uz $i; done
 for i in $ZDOTDIR/conf.d/*(.N); do source $i; done
 
-
-# autoload -Uz zrecompile
-# zrecompile -p $ZDOTDIR/.zshrc
-
-# autoload -Uz zsh_directory_name_generic zdn_wrapper 
-# add-zsh-hook -U zsh_directory_name zdn_wrapper
-# zdn_wrapper() {
-# 	local -A zdn_top=(
-# 	)
-# 	zsh_directory_name_generic "$@"
-# }
-
 autoload -Uz zmv
 autoload -Uz zed
 autoload -Uz zargs
@@ -73,15 +63,6 @@ hash -d s=~/Pictures/Screenshots
 hash -d g=~/git
 hash -d c=~/git/dotfiles
 
-# autoload -Uz add-zle-hook-widget
-# clear-screen-finish() {
-# 	if [[ -z $BUFFER ]]; then
-# 		zle clear-screen
-# 	fi
-# }
-# zle -N clear-screen-finish
-# add-zle-hook-widget zle-line-finish clear-screen-finish
-
 bindkey -N simple .safe
 
 for char in {A..Z}; do
@@ -95,9 +76,6 @@ bindkey -M simple "^\\" undefined-key
 stty -ixon
 bindkey -M simple "^Q" push-line
 
-# autoload -Uz up-line-or-beginning-search down-line-or-beginning-search 
-# zle -N up-line-or-beginning-search
-# zle -N down-line-or-beginning-search
 bindkey -M simple "^[[A" up-line-or-history
 bindkey -M simple "^[[B" down-line-or-history
 
@@ -125,4 +103,4 @@ bindkey -M simple "^[[D" backward-char
 
 bindkey -A simple main
 
-zprof
+# zprof

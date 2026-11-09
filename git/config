@@ -9,8 +9,10 @@
 ; 	ui = false
 
 [color "diff"]
-new = blue
-old = red
+	new = blue
+	old = red
+[push]
+	autoSetupRemote = true
 
 ;git help --config | grep -E "^advice\." | xargs -I {} git config --global {} false
 [advice]

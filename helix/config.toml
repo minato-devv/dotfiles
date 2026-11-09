@@ -1,4 +1,4 @@
-theme = "autumn_night"
+theme = "Sunset"
 
 [editor]
 mouse = false
@@ -18,8 +18,8 @@ enable = true
 display-progress-messages = true
 display-inlay-hints = true
 
-# [editor.inline-diagnostics]
-# cursor-line = "warning"
+[editor.inline-diagnostics]
+cursor-line = "warning"
 
 [editor.soft-wrap]
 enable = true
@@ -43,9 +43,9 @@ left = [
   "file-name",
   "file-modification-indicator"
 ]
-# center = [
-#   "diagnostics"
-# ]
+center = [
+  "diagnostics"
+]
 right = [
   "register",
   "diagnostics",

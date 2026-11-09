@@ -1,6 +1,6 @@
 alias ls='ls -FA' 
 alias d='dirs -v'
-alias dus='du -sh * 2>/dev/null | sort -h'
+alias -g dus='du -sh * 2>/dev/null | sort -h'
 alias path='print -l $path' 
 alias fpath='print -l $fpath' 
 alias fjcr='fj repo create -P -r origin -H codeberg.org -S true'
