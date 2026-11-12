@@ -84,4 +84,5 @@ if [[ "$OSTYPE" == darwin* ]]; then
 	alias flush-dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 	alias list-xc-components='xcrun simctl list devices; xcrun simctl list runtimes; xcrun simctl --set ~/Library/Developer/Xcode/UserData/Previews/Simulator\ Devices list devices; xcrun simctl --set ~/Library/Developer/XCPGDevices list devices'
 	alias fj-new='fj repo create -Pp -S true -r origin -H codeberg.org $(basename $PWD)'
+	alias bu='brew update && brew upgrade --greedy && brew cleanup && brew autoremove && brew doctor'
 fi

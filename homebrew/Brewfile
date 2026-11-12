@@ -1,35 +1,17 @@
-# Dashboard for a fleet of Git repositories
-brew "drydock"
-# Like neofetch, but much faster because written mostly in C
-brew "fastfetch"
 # CLI tool for interacting with Forgejo
 brew "forgejo-cli"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
-# Post-modern modal text editor
-brew "helix"
-# Client library for huggingface.co hub
-brew "hf"
-# Language Server for the Lua language
-brew "lua-language-server"
-# Apple Silicon Monitor Top written in Go Lang
-brew "mactop"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Extremely fast Python linter, written in Rust
 brew "ruff"
-# TOML toolkit written in Rust
-brew "taplo"
-# Print stylish CSV tables in your terminal
-brew "tennis"
-# Run tasks and dependency-aware workflows from Markdown
-brew "upmd"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Voice and text chat software
 cask "discord"
+# System monitor tool
+cask "ftop"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Minecraft launcher

@@ -1,5 +1,5 @@
-export VISUAL='hx'
-export EDITOR='hx'
+export VISUAL='vis'
+export EDITOR='vis'
 export PAGER='less'
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
