@@ -11,6 +11,7 @@ export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 export SHELL_SESSIONS_DISABLE=1
 
 export HOMEBREW_NO_ASK=1
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 export HOMEBREW_CONFIG_HOME="$XDG_CONFIG_HOME/homebrew"
 export HOMEBREW_CACHE="$XDG_CACHE_HOME/homebrew"
 export HOMEBREW_LOGS="$XDG_STATE_HOME/homebrew/logs"
