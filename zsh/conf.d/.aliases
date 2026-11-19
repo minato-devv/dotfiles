@@ -3,26 +3,10 @@ alias d='dirs -v'
 alias -g dus='du -sh * 2>/dev/null | sort -h'
 alias path='print -l $path' 
 alias fpath='print -l $fpath' 
-alias fjcr='fj repo create -P -r origin -H codeberg.org -S true'
-alias code-url='open $(git remote -v | awk "NR==1{print $2}" | sed -E "s|ssh://git@(.*)\\.git|https://\\1|")'
 
 alias -s git='git clone' 
-alias -s {py,md,txt}=nvim 
-alias -s {swift}="open -a Xcode-beta"
 alias -s json='jq .'
 
-ezsh() {
-	if [[ -z "$1" ]]; then
-		echo "Usage: ezsh <config-name>"
-		return 1
-	fi
-	local i=~zsh/$1
-	if [[ -f "$i" ]]; then
-		$EDITOR "$i"
-	else
-		echo "No hash directory found for: $1"
-	fi
-}
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
@@ -46,16 +30,3 @@ alias gsv='git status -v -b'
 alias gs='git status'
 alias gd='git diff'
 alias gds='git diff --staged'
-
-if [[ "$OSTYPE" == darwin* ]]; then
-	alias mdfind='mdfind 2>/dev/null'
-	alias bbl="brew bundle list --file $XDG_CONFIG_HOME/homebrew/Brewfile"
-	alias bbd="brew bundle dump --force --file $XDG_CONFIG_HOME/homebrew/Brewfile"
-	alias commit='fm respond --model pcc "System Prompt: Git Commit Message Drafter\n - Output format: single line only, no body or footer.\n Prefix with standard type: chore:, fix:, add:, update:, remove:, refactor:, docs:, test:.\n Write concise imperative summary of change; keep under 72 characters.\n No extra text—message only in header. $(gs && gdh)"'
-	alias gcf='ghostty +edit-config'
-	alias ff='fastfetch'
-	alias flush-dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
-	alias list-xc-components='xcrun simctl list devices; xcrun simctl list runtimes; xcrun simctl --set ~/Library/Developer/Xcode/UserData/Previews/Simulator\ Devices list devices; xcrun simctl --set ~/Library/Developer/XCPGDevices list devices'
-	alias fj-new='fj repo create -Pp -S true -r origin -H codeberg.org $(basename $PWD)'
-	alias bu='brew update && brew upgrade --greedy && brew cleanup && brew autoremove && brew doctor'
-fi

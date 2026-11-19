@@ -46,23 +46,6 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%S%d (%n)%s'
 zstyle ':completion:*' file-sort access
 
-for i in $ZDOTDIR/functions/*(.N:t); do autoload -Uz $i; done
-for i in $ZDOTDIR/conf.d/*(.N); do source $i; done
-
-autoload -Uz zmv
-autoload -Uz zed
-autoload -Uz zargs
-zmodload zsh/mathfunc
-zmodload zsh/datetime
-
-hash -d v=/Volumes
-hash -d z=$ZDOTDIR
-hash -d l=~/Downloads
-hash -d d=~/Documents
-hash -d s=~/Pictures/Screenshots
-hash -d g=~/git
-hash -d c=~/git/dotfiles
-
 bindkey -N simple .safe
 
 for char in {A..Z}; do
