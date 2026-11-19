@@ -1,27 +1,16 @@
-typeset -gUxT PATH path
-path=(
-	"/Applications/SF Symbols.app/Contents/Executables/"
-	"/opt/homebrew/bin"
-	$path
-)
-
-typeset -gUxT FPATH fpath
-fpath=(
-	"$ZDOTDIR/functions"
-	"$ZDOTDIR/completion" 
-	/opt/homebrew/share/zsh/site-functions
-	$fpath
-)
-
-typeset -gUxT CDPATH cdpath
-cdpath=(
-	"$XDG_CONFIG_HOME"
-	"$HOME"
-	"$HOME/git"
-	"$HOME/College"
-	"$HOME/Documents"
-	"$HOME/Downloads"
-	"$HOME/Desktop"
-	"$ICLOUD"
-	$cdpath
-)
+#typeset -gUxT PATH path
+#path=(
+#	$path
+#)
+#
+#typeset -gUxT FPATH fpath
+#fpath=(
+#	$fpath
+#)
+#
+#typeset -gUxT CDPATH cdpath
+#cdpath=(
+#	"$XDG_CONFIG_HOME"
+#	"$HOME"
+#	$cdpath
+#)
