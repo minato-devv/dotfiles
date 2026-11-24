@@ -33,12 +33,21 @@ autoload -Uz add-zsh-hook
 #zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
 #export PROMPT='%~${vcs_info_msg_0_} %# '
 git_branch() {
-	local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-	if [[ -n $branch ]]; then
-		GIT_BRANCH=" ($branch)"
-	else
-		GIT_BRANCH=""
-	fi
+	GIT_BRANCH=""
+	local d="$PWD"
+
+	while [[ -n "$d" ]]; do
+		if [[ -f "$d/.git/HEAD" ]]; then
+			local head=$(<"$d/.git/HEAD")
+			if [[ $head == ref:\ refs/heads/* ]]; then
+				GIT_BRANCH=" (${head#ref: refs/heads/})"
+			else
+				GIT_BRANCH=" (${head:0:7})"
+			fi
+			return
+		fi
+		d=${d%/*}
+	done
 }
 add-zsh-hook precmd git_branch
 export PROMPT='%S%D %T%s %n@%M %B%d%b${GIT_BRANCH} %# '
