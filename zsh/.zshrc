@@ -23,16 +23,25 @@ setopt interactive_comments
 setopt prompt_subst
 
 autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-add-zsh-hook precmd vcs_info
+#autoload -Uz vcs_info
+#add-zsh-hook precmd vcs_info
 
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr ' *'
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
+#zstyle ':vcs_info:*' enable git
+#zstyle ':vcs_info:*' check-for-changes true
+#zstyle ':vcs_info:*' unstagedstr ' *'
+#zstyle ':vcs_info:*' stagedstr '+'
+#zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
 #export PROMPT='%~${vcs_info_msg_0_} %# '
-export PROMPT='%S%D %T%s %n@%M %B%d%b %# '
+git_branch() {
+	local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+	if [[ -n $branch ]]; then
+		GIT_BRANCH=" ($branch)"
+	else
+		GIT_BRANCH=""
+	fi
+}
+add-zsh-hook precmd git_branch
+export PROMPT='%S%D %T%s %n@%M %B%d%b${GIT_BRANCH} %# '
 
 zmodload zsh/complist
 autoload -Uz compinit && compinit -C -d "$XDG_CACHE_HOME/zsh/.zcompdump"
