@@ -14,6 +14,9 @@ mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
 
+alias ggs='find ~/git -maxdepth 1 -mindepth 1 -type d -exec git -C {} status \;'
+alias ggf='find ~/git -maxdepth 1 -mindepth 1 -type d -exec git -C {} fetch \;'
+
 alias gl='git log --all --graph'
 alias glp='gl -p'
 alias gls='gl --stat'

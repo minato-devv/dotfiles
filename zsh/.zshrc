@@ -4,7 +4,8 @@ zmodload zsh/zpty
 mkdir -p "$XDG_CONFIG_HOME" "$ZDOTDIR" "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh" "$XDG_DATA_HOME"
 
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-export CLICOLOR=1
+#export CLICOLOR=1
+unset CLICOLOR
 export HISTSIZE=10000
 export SAVEHIST=10000
 
@@ -30,8 +31,8 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr ' *'
 zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:git:*' formats ' [%b%u%c]'
-export PROMPT='%~${vcs_info_msg_0_} %# '
-# export PROMPT='%# '
+#export PROMPT='%~${vcs_info_msg_0_} %# '
+export PROMPT='%S%D %T%s %n@%M %B%d%b %# '
 
 zmodload zsh/complist
 autoload -Uz compinit && compinit -C -d "$XDG_CACHE_HOME/zsh/.zcompdump"
