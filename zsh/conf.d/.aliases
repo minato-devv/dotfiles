@@ -1,4 +1,4 @@
-alias ls='ls -FA' 
+alias ls='ls -lFA' 
 alias d='dirs -v'
 alias -g dus='du -sh * 2>/dev/null | sort -h'
 alias path='print -l $path' 

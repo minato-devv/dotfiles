@@ -1,3 +1,4 @@
+umask 077
 export VISUAL='vis'
 export EDITOR='vis'
 export PAGER='less'
