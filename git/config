@@ -9,7 +9,7 @@
 ; 	ui = false
 
 [color "diff"]
-	new = blue
+	new = green
 	old = red
 [push]
 	autoSetupRemote = true
