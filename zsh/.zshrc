@@ -1,7 +1,7 @@
 zmodload zsh/zprof
 zmodload zsh/zpty
 
-mkdir -p "$XDG_CONFIG_HOME" "$ZDOTDIR" "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh" "$XDG_DATA_HOME"
+[[ -d "$XDG_STATE_HOME/zsh" ]] || mkdir -p "$XDG_CONFIG_HOME" "$ZDOTDIR" "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh" "$XDG_DATA_HOME"
 
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 #export CLICOLOR=1
